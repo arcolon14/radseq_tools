@@ -29,7 +29,7 @@ Angel G. Rivera-Colon
 
 \examples{
 # Path to FASTA file
-myfasta <- './path/to/fasta/fa'
+myfasta <- './path/to/fasta.fa'
 
 # Create a sequences object
 mysequences <- process_fasta(fasta)
