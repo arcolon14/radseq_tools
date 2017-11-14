@@ -1,5 +1,4 @@
 # Functions for the RADTools package
-# BitBucket repository: https://bitbucket.org/angelgr2/radseq_tools
 
 
 #
@@ -93,6 +92,8 @@ cutsite_distance <- function(cut_list){
   }
   return(distances_all)
 }
+
+
 
 
 
