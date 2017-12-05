@@ -1,33 +1,56 @@
 # Functions for the RADTools package
+# BitBucket repository: https://bitbucket.org/angelgr2/radseq_tools
 
 
 #
 # 1. Read and process FASTA File
 #
-process_fasta <- function(fasta_path){
+process_fasta <- function(fasta_path, 
+                          min_seq_len=NULL){
   # Function to read FASTA and extract sequences. 
   # It converts multi-line sequences into single-line sequences.
   # Will output vector object containing all sequences.
   # Function by Angel G. Rivera-Colon
   
+  # If no minimum sequence length is specified, use default value (1000)
+  if(is.null(min_seq_len)){                    
+    min_seq_len <- 1000
+  }
+  
   fa <- file(fasta_path, 'r')
   all_seq <- c()      # Final vector containing all sequences in the reference
   loc_seq <- c()      # Local vector containing per-chromosome/scaffold sequences
+  long_seq <- NULL    # Variable containing the merged sequences
   while( TRUE ){
     line <- readLines(fa, n=1)
     # break at EOF and output last sequence set
     if( length(line) == 0 ){
       # Process last sequence set
-      all_seq <- c(all_seq, paste(loc_seq, collapse=''))
+      
+      # Append all sequence lines into a single long sequence
+      long_seq <- paste(loc_seq, collapse='')
+      
+      # If sequence is long enough, add to `all_seq` vector
+      if(nchar(long_seq) >= min_seq_len){
+        all_seq <- c(all_seq, long_seq)
+      }
       break
+      
     }
     # if line is a FASTA header (first character is ">")
     if(strsplit(line, split='')[[1]][1] == '>'){
       # And if not the first header read
       if(length(loc_seq) != 0){
-        # process previous sequence set
-        # append all sequence lines into a single long sequence
-        all_seq <- c(all_seq, paste(loc_seq, collapse=''))
+        # Process previous sequence set
+        
+        # Append all sequence lines into a single long sequence
+        long_seq <- paste(loc_seq, collapse='')
+        
+        # If sequence is long enough, add to `all_seq` vector
+        if(nchar(long_seq) >= min_seq_len){
+          all_seq <- c(all_seq, long_seq)
+        }
+        
         # clear for next sequence set
         loc_seq <- c()
       }
@@ -59,13 +82,16 @@ find_cuts <- function(sequences, cutsite){
     pos <- gregexpr(cutsite, seq, fixed=T, useBytes=T)
     # Extract the position vector from regex object
     cuts <- pos[[1]][1:length(pos[[1]])]
-    # Append it to the final list
-    final_cut[[idx]] <- cuts
+    # If cut object is not `-1` (no objects found), append it to the final list
+    if(cuts[1] != -1){
+      final_cut[[idx]] <- cuts
+    } else {
+      final_cut[[idx]] <- NA
+    }
     idx <- idx + 1
   }
   return(final_cut)
 }
-
 
 
 #
@@ -81,20 +107,15 @@ cutsite_distance <- function(cut_list){
   distances_all <- c()                # Vector containing all calculated distances
   # Loop throught the chromosomes...
   for(cuts in cut_list){
-    # Position of previous cutsite, defaults to 0 at the start of each chromosome. 
-    prev <- 0
-    # Loop through the cuts in each chromosome...
-    for(cut in cuts){
-      distance <- cut - prev
-      distances_all <- c(distances_all, distance)
-      prev <- cut
-    }
+    # Add an initial zero to the `cuts` vector, so distance of first cutsite can be calculated. 
+    cuts <- c(0, cuts)
+    # Calculate distance between cut sites using `diff()`. Omit missing values (for sequences without cuts)
+    distances <- diff(na.omit(cuts))
+    # Add `distances` vector (this chromosome) to `distances_all` (all chromosomes)
+    distances_all <- c(distances_all, distances)
   }
   return(distances_all)
 }
-
-
-
 
 
 
