@@ -187,7 +187,7 @@ Samples_Per_Lane <- function(num_cutsites,
 #
 # 7. Find the number of DNA sequence reads
 #
-DNA_reads_Per_Lane <- function(num_cutsites, 
+DNA_Reads_Per_Lane <- function(num_cutsites, 
                                num_samples,
                                desired_coverage = NULL){
   #This function calculates the estimated number of DNA reads that will be generated based
