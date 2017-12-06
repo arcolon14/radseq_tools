@@ -120,29 +120,30 @@ cutsite_distance <- function(cut_list){
 #
 #4. Find number of cutsites 
 #
-number_cutsites <- function(cutsite_list){
+number_cutsites <- function(cutsite_list){ #Cutsite_list is an object product of the find_cuts() function
 #This function calculates the total number of cutsites in the genome
 #Function by Kira Long
   count <- 0
   for (i in 1:length(cutsite_list)){
+    #Skip cut vector if it contains NA i.e. a cutsite was not found in the sequence
     if(is.na(cutsite_list[[i]][1]) == FALSE){
       count <- count + length(cutsite_list[[i]])
     }
   }
+  #Returns a single numeric value, which is the sum of all cutsites
   return(count)
 }
 
-#
-#5. Find the coverage per sample
-#
-# Define sequencing machines
+#Defining sequencing machines for functions 5 and 6
 hiseq2500 <- c(2.2e8, 3.1e8, 4e8)
 names(hiseq2500) <- c('Low', 'Med', 'Hi')
 
 hiseq4000 <- c(5.0e8, 7.5e8, 1.0e9)
 names(hiseq4000) <- c('Low', 'Med', 'Hi')
 
-
+#
+#5. Find the coverage per sample
+#
 Per_Sample_Coverage <- function(num_cutsites,                  #Number of cutsites present in your genome
                                 num_samples,                   #Number of total samples you want to sequence
                                 sequencing_machine = NULL){    #Illumina sequencing platform you want to use
