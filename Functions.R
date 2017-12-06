@@ -121,9 +121,11 @@ cutsite_distance <- function(cut_list){
 #4. Find number of cutsites 
 #
 number_cutsites <- function(cutsite_list){
+#This function calculates the total number of cutsites in the genome
+#Function by Kira Long
   count <- 0
   for (i in 1:length(cutsite_list)){
-    if(is.na(cutsite_list[[i]][1] == FALSE)){
+    if(is.na(cutsite_list[[i]][1]) == FALSE){
       count <- count + length(cutsite_list[[i]])
     }
   }
