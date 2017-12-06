@@ -117,9 +117,13 @@ cutsite_distance <- function(cut_list){
   return(distances_all)
 }
 
+#
+#4. Find number of cutsites 
+#
 
-
-
+#
+#5. Find the coverage per sample
+#
 # Define sequencing machines
 hiseq2500 <- c(2.2e8, 3.1e8, 4e8)
 names(hiseq2500) <- c('Low', 'Med', 'Hi')
@@ -152,7 +156,12 @@ Per_Sample_Coverage <- function(num_cutsites,                  #Number of cutsit
 }
 
 
-Samples_Per_Lane <- function(num_cutsites, desired_coverage = NULL, sequencing_machine = NULL){
+#
+#6. Find the number of samples that can fit in one illumina lane
+#
+Samples_Per_Lane <- function(num_cutsites,
+			     desired_coverage = NULL,
+			     sequencing_machine = NULL){
   #This function calculates the estimate number of samples you can put in 1 illumina lane to
   #get a desired, set coverage based on the number of cutsites in your genome and the illumina 
   #machine used to sequence
@@ -173,3 +182,8 @@ Samples_Per_Lane <- function(num_cutsites, desired_coverage = NULL, sequencing_m
   estimated_num_samples <- min_DNA_seqs/RADtags
   return(round(estimated_num_samples))
 }
+
+
+#
+# 7. Find the number of DNA sequence reads
+#
