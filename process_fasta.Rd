@@ -8,12 +8,15 @@ Read and Process FASTA Files.
 Function to read and process FASTA files into single-line sequences, R compatible objects.
 }
 \usage{
-process_fasta(path_to_fasta)
+process_fasta(path_to_fasta, min_seq_len)
 }
 
 \arguments{
   \item{path_to_fasta}{
 Path to FASTA file. It can be zipped (\code{.gz}) or unzipped. 
+}
+\item{min_seq_len}{
+(\code{int}) Minimum sequence length. Sequences smaller than this value will not be included in the \code{sequences} object. Default: (\code{5000}). 
 }
 }
 
@@ -32,7 +35,7 @@ Angel G. Rivera-Colon
 myfasta <- './path/to/fasta.fa'
 
 # Create a sequences object
-mysequences <- process_fasta(fasta)
+mysequences <- process_fasta(fasta, 10000)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
