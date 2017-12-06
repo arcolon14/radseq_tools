@@ -120,6 +120,15 @@ cutsite_distance <- function(cut_list){
 #
 #4. Find number of cutsites 
 #
+number_cutsites <- function(cutsite_list){
+  count <- 0
+  for (i in 1:length(cutsite_list)){
+    if(is.na(cutsite_list[[i]][1] == FALSE)){
+      count <- count + length(cutsite_list[[i]])
+    }
+  }
+  return(count)
+}
 
 #
 #5. Find the coverage per sample
