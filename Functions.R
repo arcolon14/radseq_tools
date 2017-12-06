@@ -187,3 +187,17 @@ Samples_Per_Lane <- function(num_cutsites,
 #
 # 7. Find the number of DNA sequence reads
 #
+DNA_reads_Per_Lane <- function(num_cutsites, 
+                               num_samples,
+                               desired_coverage = NULL){
+  #This function calculates the estimated number of DNA reads that will be generated based
+  #on the number of cutsites, number of samples, and desired coverage.
+  #Function by Kira Long
+  if(is.null(desired_coverage)){    #If no desired coverage is provided, function will default to 30
+    desired_coverage <- 30          #as 30 is minimum to identify heterozygotes
+  }
+  RADtags <- num_cutsites*2         #Determines your number of RADtags
+  #Determine how many DNA sequences you will get from all samples
+  DNA_reads <- num_samples * RADtags * desired_coverage
+  return(format(DNA_reads, scientific = TRUE, digits = 2)) #Returns number in scientific notation
+}
