@@ -1,12 +1,13 @@
 # testing functions and utilities of the `RADTools` package
-setwd("~/mercurial_repo/radseq_tools")
+#setwd("~/mercurial_repo/radseq_tools")
+setwd("~/GitHub/radseq_tools")
 
 # source of all functions
 source('./Functions.R')
 
 # path to FASTA file
 path <- './test.fa'
-#path <- './test_geno.fa.gz'
+path <- './test_geno.fa.gz'
 
 # create sequence object
 Seqs <- process_fasta(path, 1)
@@ -21,11 +22,14 @@ renz <- 'ACGT'
 all_cuts <- find_cuts(Seqs, renz)
 all_cuts
 
+
 # distance of cutsites
 distances_all <- cutsite_distance(all_cuts)
 distances_all
 hist(distances_all)
 
+# number of cutsites
+number_cutsites(all_cuts)
 
 cuts_n = 39000
 sams = 96
@@ -38,4 +42,5 @@ Samples_Per_Lane(cuts_n, 30)
 Samples_Per_Lane(cuts_n, 60)
 Samples_Per_Lane(cuts_n, 60, 'hiseq4000')
 
+DNA_Reads_Per_Lane(cuts_n, sams, 30)
 
