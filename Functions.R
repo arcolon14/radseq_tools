@@ -12,9 +12,9 @@ process_fasta <- function(fasta_path,
   # Will output vector object containing all sequences.
   # Function by Angel G. Rivera-Colon
   
-  # If no minimum sequence length is specified, use default value (1000)
+  # If no minimum sequence length is specified, use default value (5000)
   if(is.null(min_seq_len)){                    
-    min_seq_len <- 1000
+    min_seq_len <- 5000
   }
   
   fa <- file(fasta_path, 'r')
