@@ -37,7 +37,3 @@ myfasta <- './path/to/fasta.fa'
 # Create a sequences object
 mysequences <- process_fasta(fasta, 10000)
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
