@@ -1,57 +1,65 @@
 \name{find_cuts}
 \alias{find_cuts}
-%- Also NEED an '\alias' for EACH other topic documented here.
+
 \title{
-%%  ~~function to do ... ~~
+Find Restriction Site Positions in Genomic Sequence
 }
 \description{
-%%  ~~ A concise (1-5 lines) description of what the function does. ~~
+Function to find the positions of user-defined restriction sites sequences in genomic sequences of interest. Uses an R \code{gregexpr} function to find matches of a pattern (restriction site sequence) in a target character vector (genomic sequences). Positions of these matches are then saved as output. Character vectors with no matches are defined as missing values (\code{NA}).
 }
 \usage{
-find_cuts(x)
-}
-%- maybe also 'usage' for other objects documented here.
-\arguments{
-  \item{x}{
-%%     ~~Describe \code{x} here~~
-}
-}
-\details{
-%%  ~~ If necessary, more details than the description above ~~
-}
-\value{
-%%  ~Describe the value returned
-%%  If it is a LIST, use
-%%  \item{comp1 }{Description of 'comp1'}
-%%  \item{comp2 }{Description of 'comp2'}
-%% ...
-}
-\references{
-%% ~put references to the literature/web site here ~
-}
-\author{
-%%  ~~who you are~~
-}
-\note{
-%%  ~~further notes~~
+find_cuts(genomic_seq, restriction_site_seq)
 }
 
-%% ~Make other sections like Warning with \section{Warning }{....} ~
+\arguments{
+  \item{genomic_seq}{
+Vector containing per-chromosome/scaffold genomic sequence strings. Argument is designed to be compatible with the output of the \code{process_fasta} function. (\code{x} from \code{gregexpr} function)
+}
+\item{restriction_site_seq}{
+String containing the restriction site sequence of interest. (\code{pattern} from \code{gregexpr} function)
+}
+}
+
+\value{
+Returns a list of vectors. Each list elements contains a vector of the per-chromosome/scaffold restriction site positions. It is extracted from the first element from the \code{gregexpr} function output. 
+
+Example:
+
+\code{[[1]]}
+
+\code{[1]  7 19 28 50}
+
+
+\code{[[2]]}
+
+\code{[1]  2 22 33 38 53}
+
+
+\code{[[3]]}
+
+\code{[1] NA}
+
+
+\code{[[4]]}
+
+\code{[1] 12 30 36 42}}
+}
+
+\author{
+Angel G. Rivera-Colon
+}
+
+\examples{
+# Define restriction enzyme sequence
+myEnz <- 'CTGCAG'
+
+# Find position of enzyme sequence in 
+# genomic sequence object (mySeqs)
+cutPositions <- find_cuts(mySeqs, myEnz)
+}
 
 \seealso{
-%% ~~objects to See Also as \code{\link{help}}, ~~~
+\code{\link{gregexpr}}
 }
-\examples{
-##---- Should be DIRECTLY executable !! ----
-##-- ==>  Define data, use random,
-##--	or do  help(data=index)  for the standard data sets.
 
-## The function is currently defined as
-function (x) 
-{
-  }
-}
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ ~kwd1 }% use one of  RShowDoc("KEYWORDS")
-\keyword{ ~kwd2 }% __ONLY ONE__ keyword per line
+
