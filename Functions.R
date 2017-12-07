@@ -63,6 +63,13 @@ process_fasta <- function(fasta_path,
   return(all_seq)  # output final sequence vector
 }
 
+# Vector containing commonly used restriction enzymes
+renz <- c(
+  pstI = 'CTGCAG',
+  sbfI = 'CCTGCAGG',
+  ecoRI = 'GAATTC',
+  hindIII = 'AAGCTT'
+)
 
 #
 # 2. Find cutsites in reference sequence

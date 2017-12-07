@@ -27,9 +27,14 @@ all_cuts
 distances_all <- cutsite_distance(all_cuts)
 distances_all
 hist(distances_all)
+mean(distances_all)
+sd(distances_all)
+summary(distances_all)
+boxplot(distances_all)
 
 # number of cutsites
 number_cutsites(all_cuts)
+
 
 cuts_n = 39000
 sams = 96
@@ -42,5 +47,5 @@ Samples_Per_Lane(cuts_n, 30)
 Samples_Per_Lane(cuts_n, 60)
 Samples_Per_Lane(cuts_n, 60, 'hiseq4000')
 
-DNA_Reads_Per_Lane(cuts_n, sams, 30)
+reads <- DNA_Reads_Per_Lane(cuts_n, sams, 30)
 
