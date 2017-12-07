@@ -40,7 +40,7 @@ number_cutsites(all_cuts)
 cuts_n <- 39000
 sams <- 96
 Per_Sample_Coverage(cuts_n, sams)
-Per_Sample_Coverage(cuts_n, sams, 'hiseq2500')
+is.vector(Per_Sample_Coverage(cuts_n, sams, 'hiseq2500'))
 Per_Sample_Coverage(cuts_n, sams, 'hiseq4000')
 
 
