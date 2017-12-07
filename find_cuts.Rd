@@ -27,6 +27,7 @@ Example:
 
 In chromosome 1, we have cutsites at positions 7, 19, 28 and 50. No cutsites were found con chromosome 2. Cutsites were found in positions 12, 30, 36 and 42 in chromosome 3. 
 
+
 \code{[[1]]}
 
 \code{[1]  7 19 28 50}
