@@ -12,6 +12,7 @@ path <- './test_geno.fa.gz'
 # create sequence object
 Seqs <- process_fasta(path, 1)
 Seqs
+process_fasta('./test.fa', 2)
 
 # Sequence of the restriction site
 renz <- 'CCTGCAGG'
@@ -36,8 +37,8 @@ boxplot(distances_all)
 number_cutsites(all_cuts)
 
 
-cuts_n = 39000
-sams = 96
+cuts_n <- 39000
+sams <- 96
 Per_Sample_Coverage(cuts_n, sams)
 Per_Sample_Coverage(cuts_n, sams, 'hiseq2500')
 Per_Sample_Coverage(cuts_n, sams, 'hiseq4000')
@@ -47,5 +48,6 @@ Samples_Per_Lane(cuts_n, 30)
 Samples_Per_Lane(cuts_n, 60)
 Samples_Per_Lane(cuts_n, 60, 'hiseq4000')
 
-reads <- DNA_Reads_Per_Lane(cuts_n, sams, 30)
+
+DNA_Reads_Per_Lane(cuts_n, sams, 30)
 
