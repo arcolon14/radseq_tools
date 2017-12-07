@@ -12,7 +12,7 @@ Users will need to download R. Users will also need a genome FASTA file to start
 There are no prerequisites required to run this package, only standard R. 
 
 # Installing
-Use the standard install.packages("RADtools").
+Use the standard install.packages("RADseq_tools").
 
 # Authors
 Angel Rivera-Colon & Kira Long
