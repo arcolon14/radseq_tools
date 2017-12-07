@@ -211,5 +211,5 @@ DNA_Reads_Per_Lane <- function(num_cutsites,
   RADtags <- num_cutsites*2         #Determines your number of RADtags
   #Determine how many DNA sequences you will get from all samples
   DNA_reads <- num_samples * RADtags * desired_coverage
-  return(format(DNA_reads, scientific = TRUE, digits = 2)) #Returns number in scientific notation
+  return(DNA_reads) #Returns number of reads
 }
