@@ -1,0 +1,10 @@
+\VignetteIndexEntry{A Tutorial for RADseq_Tools}
+\documentclass{article}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+
+
+
+
+\end{document}
