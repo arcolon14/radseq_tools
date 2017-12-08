@@ -8,10 +8,10 @@ This pipeline allows researchers to estimate important information of r the init
 # Getting Started
 Users will need to download R. Users will also need a genome FASTA file to start the pipeline. There is a test FASTA file provided to play with, but ultimately users will need to provide their own reference genome in the FASTA format. 
 
-# Prerequisites
+## Prerequisites
 There are no prerequisites required to run this package, only standard R. 
 
-# Installing
+## Installing
 Use the standard install.packages("RADseq_tools").
 
 # Authors
