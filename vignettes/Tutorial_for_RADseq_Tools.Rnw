@@ -1,9 +1,30 @@
-\VignetteIndexEntry{A Tutorial for RADseq_Tools}
+%\VignetteIndexEntry{RADseq_Tools_tutorial}
 \documentclass{article}
-
+\usepackage{Sweave}
+\title{A Tutorial for RADseq_Tools}
+\author{Angel Rivera-Colon \\ Kira Long}
 \begin{document}
 \SweaveOpts{concordance=TRUE}
 
+\section*{Introduction}
+\section*{Getting started}
+\section*{Tutorial}
+\section*{Other applications}
+
+
+
+
+
+Hello, this is a test. 
+<<>>=
+for(i in 1:10){
+  print(i)
+}
+@
+This is a plot
+<<fig=TRUE>>=
+plot(1:10,1:10)
+@
 
 
 
