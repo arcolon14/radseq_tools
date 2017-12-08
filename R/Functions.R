@@ -142,7 +142,7 @@ number_cutsites <- function(cutsite_list){ #Cutsite_list is an object product of
 }
 
 #Defining sequencing machines for functions 5 and 6
-hiseq2500 <- c(2.2e8, 3.1e8, 4e8)
+hiseq2500 <- c(2.2e8, 3.1e8, 4.0e8)
 names(hiseq2500) <- c('Low', 'Med', 'Hi')
 
 hiseq4000 <- c(5.0e8, 7.5e8, 1.0e9)
