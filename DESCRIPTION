@@ -1,0 +1,11 @@
+Package: radseq_tools
+Version: 0.0
+Date: 2017-12-7
+Title: Tools for the Exploratory Analysis of RADseq Data
+Authors@R: person("Angel", "Rivera-Colon", role = c("aut", "cre"),
+                  email = "angelgr2@illinois.edu")
+           person("Kira", "Long", role = c("aut", "cre").
+                  email = "kira2@illinois.edu")
+Description: This package includes function to...
+Url: https://github.com/angelgr2/radseq_tools
+License: GPL-3
