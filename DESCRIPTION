@@ -1,5 +1,5 @@
 Package: RADseq_Tools
-Version: 0.0
+Version: 0.1.0
 Date: 2017-12-7
 Title: Tools for the Exploratory Analysis of RADseq Data
 Authors@R: c(person("Angel", "Rivera-Colon", role = c("aut", "cre"),
