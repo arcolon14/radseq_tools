@@ -5,7 +5,7 @@
 \title{A Tutorial for RADseq_Tools}
 \author{Angel Rivera-Colon & Kira Long}
 \begin{document}
-\SweaveOpts{concordance=TRUE}
+\input{Tutorial_for_RADseq_Tools-concordance}
 
 \section*{Introduction:}
 
@@ -17,25 +17,36 @@ Although RADseq studies require relatively little previous information on the ge
 \section*{Getting started:}
 \subsection*{Verifying R version}
 To run \emph{RADseq\_Tools}, make sure you have a recent \texttt{R} installation. The package was written using \texttt{R version 3.4.2}, but should work with versions above \texttt{3.1.0}. To verify the installed \texttt{R} version, use:
-<<>>=
-R.version.string
-@
+\begin{Schunk}
+\begin{Sinput}
+> R.version.string
+\end{Sinput}
+\begin{Soutput}
+[1] "R version 3.4.2 (2017-09-28)"
+\end{Soutput}
+\end{Schunk}
 
 \subsection*{Installation}
 Install the \emph{RADseq\_Tools} package from \texttt{CRAN} using:
 
-<<eval=FALSE>>=
-install.packages("RADseq_Tools")
-@
+\begin{Schunk}
+\begin{Sinput}
+> install.packages("RADseq_Tools")
+\end{Sinput}
+\end{Schunk}
 
 Load the package for use with:
-<<eval=FALSE>>=
-library(RADseq_Tools)
-@
+\begin{Schunk}
+\begin{Sinput}
+> library(RADseq_Tools)
+\end{Sinput}
+\end{Schunk}
 Alternatively, source the functions using:
-<<>>=
-source('./../R/Functions.R')
-@
+\begin{Schunk}
+\begin{Sinput}
+> source('./../R/Functions.R')
+\end{Sinput}
+\end{Schunk}
 
 \section*{Tutorial:}
 
@@ -44,15 +55,26 @@ This brief guide will provide examples of all the package's basic functions and 
 \subsection*{Load and process reference sequence}
 
 To begin, we need to load the reference sequence into a \texttt{RADseq\_Tools} object. This new \texttt{sequence} object can then be used to search restriction site. Create a variable containing the path to the reference sequence.  
-<<>>=
-fasta_dir <- './../inst/extdata/test_geno.fa.gz'
-@
+\begin{Schunk}
+\begin{Sinput}
+> fasta_dir <- './../inst/extdata/test_geno.fa.gz'
+\end{Sinput}
+\end{Schunk}
 This path variable is then the input of the \texttt{process\_fasta} function, which reads the file provided in the path, converting multi-line sequence objects into single line sequences. The output of the function is a vector containing the sequences strings for each of the chromosomes/scaffofds in the FASTA file. Here, we are creating the object \texttt{mySeqs} using the output of \textt{process\_fasta}, and displaying the first few nucleotides for each of the chromosomes. 
-<<>>=
-mySeqs <- process_fasta(fasta_dir)
-
-substr(mySeqs, 1, 65)
-@
+\begin{Schunk}
+\begin{Sinput}
+> mySeqs <- process_fasta(fasta_dir)
+> substr(mySeqs, 1, 65)
+\end{Sinput}
+\begin{Soutput}
+[1] "CTCTTTGTTTTCAGGTGTGGAATGTGCTTTCTACCACGGCTACAAATACTACAAAGGATGTAGTA"
+[2] "TGACTATTAAGGCGTTTGCAGGCTGAGAGAAGCCAGTCTTGAATGCTACCCCCTTTTGAGGAGAG"
+[3] "GCTAGCCTGTTTAAACCAAACCATCGGTGTGTATGATTACTTGCGCCCACACCCGGTCTCTGACG"
+[4] "GTATTATATAGTAAATACTATACATTTTCTCTACAGATAGTACAGTGAGTTTACTCTACAACCTC"
+[5] "GCTAATATTTTTATGGCTGAGTGGGAGGATTCAGTCCTGAAAATGTGTCCTAAAAAACCACTGTA"
+[6] "AACCCATCGCCTTATAGGCTGTACTTTATCCTCCAATGATGGAGCAGTTCTCCGCTGCGCGTCGG"
+\end{Soutput}
+\end{Schunk}
 
 
 \subsection*{}
@@ -77,15 +99,32 @@ Narum, S. R., Buerkle, C. A., Davey, J. W., Miller, M. R. and Hohenlohe, P. A. (
 
 
 Hello, this is a test. 
-<<>>=
-for(i in 1:10){
-  print(i)
-}
-@
+\begin{Schunk}
+\begin{Sinput}
+> for(i in 1:10){
++   print(i)
++ }
+\end{Sinput}
+\begin{Soutput}
+[1] 1
+[1] 2
+[1] 3
+[1] 4
+[1] 5
+[1] 6
+[1] 7
+[1] 8
+[1] 9
+[1] 10
+\end{Soutput}
+\end{Schunk}
 This is a plot
-<<fig=TRUE>>=
-plot(1:10,1:10)
-@
+\begin{Schunk}
+\begin{Sinput}
+> plot(1:10,1:10)
+\end{Sinput}
+\end{Schunk}
+\includegraphics{Tutorial_for_RADseq_Tools-008}
 
 
 
