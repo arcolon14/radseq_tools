@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.12.8)  11 DEC 2017 12:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.12.8)  11 DEC 2017 15:22
 entering extended mode
 **./Tutorial_for_RADseq_Tools.tex
 (Tutorial_for_RADseq_Tools.tex
@@ -280,30 +280,30 @@ File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\uni-32.def"
 File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
 )
-LaTeX Font Info:    Try loading font information for T1+aett on input line 23.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 24.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ae\t1aett.fd"
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 ) [1
 
 {C:/Users/AngelRC/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    Try loading font information for TS1+aett on input line 57.
+LaTeX Font Info:    Try loading font information for TS1+aett on input line 58.
 
 
 (C:/PROGRA~1/R/R-34~1.2/share/texmf/tex/latex\ts1aett.fd
 File: ts1aett.fd 
 )
-LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 57.
+LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 58.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmtt.fd"
 File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `TS1/aett/m/sl' in size <10> not available
-(Font)              Font shape `TS1/cmtt/m/sl' tried instead on input line 57.
+(Font)              Font shape `TS1/cmtt/m/sl' tried instead on input line 58.
 
 ! Undefined control sequence.
-l.76 ...\texttt{mySeqs} using the output of \textt
+l.77 ...\texttt{mySeqs} using the output of \textt
                                                   {process\_fasta}, and disp...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -311,43 +311,51 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[2]
-<Tutorial_for_RADseq_Tools-010.pdf, id=15, pagebox=cropbox, 433.62pt x 433.62pt
+[2] [3]
+<Tutorial_for_RADseq_Tools-011.pdf, id=18, pagebox=cropbox, 433.62pt x 433.62pt
 >
-File: Tutorial_for_RADseq_Tools-010.pdf Graphic file (type pdf)
-<use Tutorial_for_RADseq_Tools-010.pdf>
-Package pdftex.def Info: Tutorial_for_RADseq_Tools-010.pdf  used on input line 
-145. on input line 145.
+File: Tutorial_for_RADseq_Tools-011.pdf Graphic file (type pdf)
+<use Tutorial_for_RADseq_Tools-011.pdf>
+Package pdftex.def Info: Tutorial_for_RADseq_Tools-011.pdf  used on input line 
+162. on input line 162.
 Package pdftex.def Info: Requested size: 276.00105pt x 276.0139pt on input line
- 145.
- [3] [4 <./Tutorial_for_RADseq_Tools-010.pdf>] [5]
-<Tutorial_for_RADseq_Tools-015.pdf, id=31, pagebox=cropbox, 433.62pt x 433.62pt
+ 162.
+ [4 <./Tutorial_for_RADseq_Tools-011.pdf>] [5] [6]
+<Tutorial_for_RADseq_Tools-023.pdf, id=34, pagebox=cropbox, 433.62pt x 433.62pt
 >
-File: Tutorial_for_RADseq_Tools-015.pdf Graphic file (type pdf)
-<use Tutorial_for_RADseq_Tools-015.pdf>
-Package pdftex.def Info: Tutorial_for_RADseq_Tools-015.pdf  used on input line 
-245. on input line 245.
+File: Tutorial_for_RADseq_Tools-023.pdf Graphic file (type pdf)
+<use Tutorial_for_RADseq_Tools-023.pdf>
+Package pdftex.def Info: Tutorial_for_RADseq_Tools-023.pdf  used on input line 
+343. on input line 343.
 Package pdftex.def Info: Requested size: 276.00105pt x 276.0139pt on input line
- 245.
- [6 <./Tutorial_for_RADseq_Tools-015.pdf>] (Tutorial_for_RADseq_Tools.aux) ) 
+ 343.
+ [7]
+Overfull \hbox (5.34604pt too wide) in paragraph at lines 354--355
+\T1/aer/m/n/8 pop-u-la-tion ge-nomic stud-ies of adap-ta-tion. \T1/aer/m/it/8 M
+ol Ecol Re-sour\T1/aer/m/n/8 . 17:366369. doi.org/10.1111/1755-
+ []
+
+[8 <./Tutorial_for_RADseq_Tools-023.pdf>] (Tutorial_for_RADseq_Tools.aux) ) 
 Here is how much of TeX's memory you used:
- 3171 strings out of 493312
- 46854 string characters out of 3138893
+ 3182 strings out of 493312
+ 47137 string characters out of 3138893
  103664 words of memory out of 3000000
- 6643 multiletter control sequences out of 15000+200000
- 23104 words of font info for 47 fonts, out of 3000000 for 9000
+ 6645 multiletter control sequences out of 15000+200000
+ 28656 words of font info for 56 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,4n,25p,1315b,278s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C
-:\Users\AngelRC\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\tcs
-t1000.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsltt10.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on Tutorial_for_RADseq_Tools.pdf (6 pages, 112130 bytes).
+ 41i,5n,25p,1315b,288s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:
+\Users\AngelRC\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\tcst
+1000.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Progr
+am Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/M
+iKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsltt10.pfb><C:/Program Files/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmti8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmtt10.pfb>
+Output written on Tutorial_for_RADseq_Tools.pdf (8 pages, 147935 bytes).
 PDF statistics:
- 60 PDF objects out of 1000 (max. 8388607)
+ 77 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  15 words of extra memory for PDF output out of 10000 (max. 10000000)
 
