@@ -57,11 +57,11 @@ This brief guide will provide examples of all the package's basic functions and 
 
 \subsection{Load and process reference sequence}
 
-To begin, we need to load the reference sequence into a \texttt{RADseq\_Tools} object. This new \texttt{sequence} object can then be used to search restriction site. Create a variable containing the path to the reference sequence.  
+To begin, we need to load the reference sequence into a \texttt{RADseq\_Tools} object. This new \texttt{sequence} object can then be used to search for restriction sites. Create a variable containing the path to the reference sequence.  
 <<>>=
 fasta_dir <- './../inst/extdata/test_geno.fa.gz'
 @
-This path variable is then the input of the \texttt{process\_fasta} function, which reads the file provided in the path, converting multi-line sequence objects into single line sequences. Sequences bellow 10kb are filtered and not included in the resulting sequences object. The output of the function is a vector containing the sequences strings for each of the chromosomes/scaffofds in the FASTA file. Here, we are creating the object \texttt{mySeqs} using the output of \textt{process\_fasta}, and displaying the first few nucleotides for each of the chromosomes. 
+This path variable is then the input of the \texttt{process\_fasta} function, which reads the file provided in the path, converting multi-line sequence objects into single line sequences. Sequences bellow 10kb are filtered and not included in the resulting sequences object. The output of the function is a vector containing the sequence strings for each of the chromosomes/scaffofds in the FASTA file. Here, we are creating the object \texttt{mySeqs} using the output of \textt{process\_fasta}, and displaying the first few nucleotides for each of the chromosomes. 
 <<>>=
 mySeqs <- process_fasta(fasta_dir, 10000)
 
@@ -90,12 +90,12 @@ myCuts[c(1,2,3)]
 @
 
 \subsection{Find cutsite distribution}
-After determining the position of the cutsites, it is also important to determine the distribution of cutsite in the genome, as it gives us an idea of the number of cutsites and the average inter-cutsite distance. The distribution can be calculated using the \texttt{cutsite\_distance} function. Using the cutsite position list resulting from the \texttt{find\_cuts} function, it will output a single vector containing the inter-cutsite distance for all cutsites in the genome.
+After determining the position of the cutsites, it is also important to determine the distribution of cutsites in the genome, as it gives us an idea of the number of cutsites and the average inter-cutsite distance. The distribution can be calculated using the \texttt{cutsite\_distance} function. Using the cutsite position list resulting from the \texttt{find\_cuts} function, it will output a single vector containing the inter-cutsite distance for all cutsites in the genome.
 <<>>=
 cutDist <- cutsite_distance(myCuts)
 cutDist[1:10]
 @
-The resulting vector is compatible with all of \texttt{R} vector function, thus other statistical measures can be obtained. For example:
+The resulting vector is compatible with all \texttt{R} vector functions, thus other statistical measures can be obtained. For example:
 <<fig=TRUE>>=
 summary(cutDist)
 hist(cutDist, xlab='Distance (bp)', 
@@ -103,7 +103,7 @@ hist(cutDist, xlab='Distance (bp)',
 @
 
 \subsection{Find number of cutsites}
-In addition to finding the inter-cutsite distance distribution, we can also determine the total number of cutsites using the \texttt{number\_cutsites} functions. It takes as input the original cutiste positions object product of the \texttt{find\_cuts} function, and outputs a single numeric value.
+In addition to finding the inter-cutsite distance distribution, we can also determine the total number of cutsites using the \texttt{number\_cutsites} functions. It takes as input the original cutsite positions object product of the \texttt{find\_cuts} function, and outputs a single numeric value.
 <<>>=
 nCuts <- number_cutsites(myCuts)
 nCuts
@@ -114,7 +114,7 @@ length(cutDist)
 @
 
 \subsection{Estimate per-sample coverage}
-Using the estimations of cutsite distribution, the user can estimate the expected per-sample coverage when running a sequencing experiment using the \texttt{Per\_Sample\_Coverage} function. The function requires a number of cutsites (likely calculated with the \texttt{number\_cutsites} function), number of samples and the type of sequencing machine used, either Illumina HiSeq2500 (\texttt{'hiseq2500'}) or HiSeq4000 (\texttt{'hiseq4000'}) with their corresponding read throughput. The output is a vector contaning the extimated per-sample coverage for the machine's low, medium and high read throughput. 
+Using the estimations of cutsite distribution, the user can estimate the expected per-sample coverage when running a sequencing experiment using the \texttt{Per\_Sample\_Coverage} function. The function requires the number of cutsites (likely calculated with the \texttt{number\_cutsites} function), number of samples, and the type of sequencing machine used, either Illumina HiSeq2500 (\texttt{'hiseq2500'}) or HiSeq4000 (\texttt{'hiseq4000'}) with their corresponding read throughput. The output is a vector contaning the estimated per-sample coverage for the machine's low, medium and high read throughput. 
 <<>>=
 nCuts <- 35000     # Number of cutsites.
 nSams <- 96        # Number of multiplexed samples 
@@ -125,7 +125,7 @@ Per_Sample_Coverage(nCuts, nSams, illumina)
 @
 
 \subsection{Estimate samples per lane}
-The package can also be used to calculate estimation of the number of samples that can be calculated in a single Illumina sequencing lane for a given coverage. The function works similarly to \texttt{Per\_Sample\_Coverage}, as it takes a number of cutsites, a desired target coverage and a type of Illumina sequencing machines. It outputs a vector containing calculated number of samples for the machine's low, medium and high read throughputs.
+The package can also be used to calculate an estimation of the number of samples that can be sequenced in a single Illumina sequencing lane for a given coverage. The function works similarly to \texttt{Per\_Sample\_Coverage}, as it takes the number of cutsites, a desired target coverage, and a type of Illumina sequencing machine. It outputs a vector containing calculated number of samples for the machine's low, medium and high read throughputs.
 <<>>=
 nCuts <- 35000     # Number of cutsites.   
 cover <- 45        # Target per-sample average coverage
@@ -136,7 +136,7 @@ Samples_Per_Lane(nCuts, cover, illumina)
 @
 
 \subsection{Estimate required sequencing reads}
-Given a fixed number of cutsites, number of samples and target per-sample coverage, the \texttt{DNA\_Reads\_Per\_Lane} function calculates an estimate of the required number of reads. It can be used to determine the type of sequencing machine, and number of sequencing lanes, necessary for the experiment.
+Given a fixed number of cutsites, number of samples, and target per-sample coverage, the \texttt{DNA\_Reads\_Per\_Lane} function calculates an estimate of the required number of reads. It can be used to determine the type of sequencing machine, and number of sequencing lanes, necessary for the experiment.
 <<>>=
 nCuts <- 35000     # Number of cutsites.
 nSams <- 96        # Number of multiplexed samples 
@@ -201,7 +201,7 @@ boxplot(SbfI_Dist, EcoRI_Dist, HindIII_Dist,
         main='Comparison of cutsite distributions')
 @
 
-With this information, the user can have an idea of how the different enzyme behave in the reference genome of interest, or related genomes. Based on this information, they can then decide which enzyme to use based on marker desity, raw number of sites, among other variables. 
+With this information, the user can have an idea of how the different enzymes behave in the reference genome of interest, or related genomes. Based on this information, the user can then decide which enzyme to use based on marker desity and raw number of sites, among other variables. 
 
 \section{References:}
 
