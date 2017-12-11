@@ -19,7 +19,8 @@
 
 \section{Introduction:}
 
-Restriction site-Associated DNA sequencing (RADseq) is a modern genomic sequencing technique that has greatly advanced the field of population genomics. As a reduced representation-sequencing method, RADseq has decreased per-individual sequencing costs, making genome-wide studies more widely accessible to the research community (Catchen, et al. 2017). Additionally, it allows for the cost-effective sequencing and genotyping of multiple individuals, which is particularly important when discerning genetic variation in natural populations (Narum, et al. 2013). Moreover, RADseq’s compatibility with multiple genomic approaches, including phylogenomics, de novo population genomics, and genomic scans, have made it a key player in modern population genomics (Andrews, et al. 2016).\\
+Restriction site-Associated DNA sequencing (RADseq) is a modern genomic sequencing technique that has greatly advanced the field of population genomics. As a reduced representation-sequencing method, RADseq has decreased per-individual sequencing costs, making genome-wide studies more widely accessible to the research community (Catchen, et al. 2017). Additionally, it allows for the cost-effective sequencing and genotyping of multiple individuals, which is particularly important when discerning genetic variation in natural populations (Narum, et al. 2013). Moreover, RADseq’s compatibility with multiple genomic approaches, including phylogenomics, de novo population genomics, and genomic scans, have made it a key player in modern population genomics (Andrews, et al. 2016).
+\bigbreak
 Although RADseq studies require relatively little previous information on the genome of interest, the selection of restriction enzymes and its subsequent effect on marker density remains one of RADseq’s limiting factors (Lowry, et al. 2017). The selection of a poor enzyme can then lead to genome undersampling, resulting in low marker density, or oversampling, affecting the resulting downstream coverage. Based on this, we developed an \texttt{R} package pipeline for the exploratory analysis of RADseq data to guide researchers in planning their study and improving data quality. \texttt{RADseq\_tools} estimates important information for the initial experimental design, including number of cutsites, and marker density and distribution for different user-defined restriction enzyme sites and reference genomes. Even when the reference of interest is not available, the user can explore with available genomes in related taxa and use this information to extrapolate the marker properties for their experiments. In addition, this package can assist with determining the cost of a RADseq experiment by providing estimates of expected coverage, number of samples per lane, and required read throughput. 
 
 
@@ -90,11 +91,27 @@ This path variable is then the input of the \texttt{process\_fasta} function, wh
 \end{Schunk}
 
 \subsection{Find restriction sites in the reference sequences}
-The first part of finding the restriction cutsite position is defining the query to be searched, the sequence of the restriction enzyme. In this example, we are using the enzyme \texttt{SbfI}, which cuts at the sequence \texttt{CCTGCAGG}.
+The first part of finding the restriction cutsite position is defining the query to be searched, the sequence of the restriction enzyme. The package data contains sequences for four commonly used restriction enzymes stored in a vector called \texttt{renz}. They can be accesed in the following way:
 \begin{Schunk}
 \begin{Sinput}
-> SbfI <- 'CCTGCAGG'
+> renz
 \end{Sinput}
+\begin{Soutput}
+      pstI       sbfI      ecoRI    hindIII 
+  "CTGCAG" "CCTGCAGG"   "GAATTC"   "AAGCTT" 
+\end{Soutput}
+\end{Schunk}
+
+In this example, we are using the enzyme \texttt{SbfI}, which cuts at the sequence \texttt{CCTGCAGG}.
+\begin{Schunk}
+\begin{Sinput}
+> SbfI <- renz['sbfI']
+> SbfI
+\end{Sinput}
+\begin{Soutput}
+      sbfI 
+"CCTGCAGG" 
+\end{Soutput}
 \end{Schunk}
 Once the restriction site sequence is defined, it will be searched in the stored sequences using the \texttt{find\_cuts} function. Using \texttt{gregexpr}, it will find all matches of the restriction site query in the reference sequences. The resulting output is a list of vectors, containing all the per-chromosome/scaffold match positions.
 \bigbreak
@@ -142,7 +159,7 @@ The resulting vector is compatible with all of \texttt{R} vector function, thus 
 +      ylab='Frequency', main='Cutsite distance distribution' )
 \end{Sinput}
 \end{Schunk}
-\includegraphics{Tutorial_for_RADseq_Tools-010}
+\includegraphics{Tutorial_for_RADseq_Tools-011}
 
 \subsection{Find number of cutsites}
 In addition to finding the inter-cutsite distance distribution, we can also determine the total number of cutsites using the \texttt{number\_cutsites} functions. It takes as input the original cutiste positions object product of the \texttt{find\_cuts} function, and outputs a single numeric value.
@@ -169,8 +186,8 @@ Alternatively, the number of cutsites can be manually calculated from the length
 Using the estimations of cutsite distribution, the user can estimate the expected per-sample coverage when running a sequencing experiment using the \texttt{Per\_Sample\_Coverage} function. The function requires a number of cutsites (likely calculated with the \texttt{number\_cutsites} function), number of samples and the type of sequencing machine used, either Illumina HiSeq2500 (\texttt{'hiseq2500'}) or HiSeq4000 (\texttt{'hiseq4000'}) with their corresponding read throughput. The output is a vector contaning the extimated per-sample coverage for the machine's low, medium and high read throughput. 
 \begin{Schunk}
 \begin{Sinput}
-> nCuts <- 35000
-> nSams <- 96
+> nCuts <- 35000     # Number of cutsites.
+> nSams <- 96        # Number of multiplexed samples 
 > illumina <- 'hiseq2500'
 > Per_Sample_Coverage(nCuts, nSams, illumina)
 \end{Sinput}
@@ -188,61 +205,155 @@ Using the estimations of cutsite distribution, the user can estimate the expecte
 \end{Soutput}
 \end{Schunk}
 
+\subsection{Estimate samples per lane}
+The package can also be used to calculate estimation of the number of samples that can be calculated in a single Illumina sequencing lane for a given coverage. The function works similarly to \texttt{Per\_Sample\_Coverage}, as it takes a number of cutsites, a desired target coverage and a type of Illumina sequencing machines. It outputs a vector containing calculated number of samples for the machine's low, medium and high read throughputs.
+\begin{Schunk}
+\begin{Sinput}
+> nCuts <- 35000     # Number of cutsites.   
+> cover <- 45        # Target per-sample average coverage
+> illumina <- 'hiseq2500'
+> Samples_Per_Lane(nCuts, cover, illumina)
+\end{Sinput}
+\begin{Soutput}
+Low Med  Hi 
+ 70  98 127 
+\end{Soutput}
+\begin{Sinput}
+> illumina <- 'hiseq4000'
+> Samples_Per_Lane(nCuts, cover, illumina)
+\end{Sinput}
+\begin{Soutput}
+Low Med  Hi 
+159 238 317 
+\end{Soutput}
+\end{Schunk}
 
-
-
-
-
+\subsection{Estimate required sequencing reads}
+Given a fixed number of cutsites, number of samples and target per-sample coverage, the \texttt{DNA\_Reads\_Per\_Lane} function calculates an estimate of the required number of reads. It can be used to determine the type of sequencing machine, and number of sequencing lanes, necessary for the experiment.
+\begin{Schunk}
+\begin{Sinput}
+> nCuts <- 35000     # Number of cutsites.
+> nSams <- 96        # Number of multiplexed samples 
+> cover <- 45        # Target per-sample average coverage
+> DNA_Reads_Per_Lane(nCuts, nSams, cover)
+\end{Sinput}
+\begin{Soutput}
+[1] 3.02e+08
+\end{Soutput}
+\end{Schunk}
 
 
 
 \section{Other applications:}
+An important application of the \texttt{RADseq\_Tools} package is to compare the use of different datasets made with different restriction enzymes. The purpose of this application is to assist in the experimental design of RADseq projects, as choosing the right enzyme is fundamental for the success of the experiment. 
+\bigbreak
+To begin, we will process the test reference genome as before, storing the sequences in the \texttt{mySeqs} object. 
+\begin{Schunk}
+\begin{Sinput}
+> fasta_dir <- './../inst/extdata/test_geno.fa.gz'
+> mySeqs <- process_fasta(fasta_dir, 10000)
+\end{Sinput}
+\end{Schunk}
+
+After storing the sequences, we will find cutsites using three different restriction enzymes: \texttt{SbfI}, \texttt{EcoRI} and \texttt{HindIII}. The cutsite sequences are available in the \texttt{renz} vector. 
+\begin{Schunk}
+\begin{Sinput}
+> # For SbfI
+> SbfI <- renz['sbfI']
+> SbfI_Cuts <- find_cuts(mySeqs, SbfI)
+> SbfI_Dist <- cutsite_distance(SbfI_Cuts)
+> SbfI_num <- number_cutsites(SbfI_Cuts)
+\end{Sinput}
+\end{Schunk}
+\begin{Schunk}
+\begin{Sinput}
+> # For EcoRI
+> EcoRI <- renz['ecoRI']
+> EcoRI_Cuts <- find_cuts(mySeqs, EcoRI)
+> EcoRI_Dist <- cutsite_distance(EcoRI_Cuts)
+> EcoRI_num <- number_cutsites(EcoRI_Cuts)
+\end{Sinput}
+\end{Schunk}
+\begin{Schunk}
+\begin{Sinput}
+> # For HindIII
+> HindIII <- renz['hindIII']
+> HindIII_Cuts <- find_cuts(mySeqs, HindIII)
+> HindIII_Dist <- cutsite_distance(HindIII_Cuts)
+> HindIII_num <- number_cutsites(HindIII_Cuts)
+\end{Sinput}
+\end{Schunk}
+
+By displaying the cutsites for just the first chromosome/scaffold, we can see that the cutsite positions in the genome for each enzyme is different for each enzyme:
+\begin{Schunk}
+\begin{Sinput}
+> SbfI_Cuts[[1]]
+\end{Sinput}
+\begin{Soutput}
+[1] 11812 33253 49707 65489 65747 65834 67213 89247 92064
+\end{Soutput}
+\begin{Sinput}
+> EcoRI_Cuts[[1]]
+\end{Sinput}
+\begin{Soutput}
+[1]  8919 32571 58427 62641 90174
+\end{Soutput}
+\begin{Sinput}
+> HindIII_Cuts[[1]]
+\end{Sinput}
+\begin{Soutput}
+ [1]   211   795  1248  2639 11265 11611 11943 18494 21615 29090 32550 36482
+[13] 41716 42491 44116 45708 53990 54429 56980 60812 64051 64074 65401 82684
+[25] 86097 98196 98628
+\end{Soutput}
+\end{Schunk}
+
+Also, the total number of cutsites is different:
+\begin{Schunk}
+\begin{Sinput}
+> SbfI_num
+\end{Sinput}
+\begin{Soutput}
+[1] 42
+\end{Soutput}
+\begin{Sinput}
+> EcoRI_num
+\end{Sinput}
+\begin{Soutput}
+[1] 80
+\end{Soutput}
+\begin{Sinput}
+> HindIII_num
+\end{Sinput}
+\begin{Soutput}
+[1] 151
+\end{Soutput}
+\end{Schunk}
+
+And have completely different inter-cutsite distance distributions:
+\begin{Schunk}
+\begin{Sinput}
+> boxplot(SbfI_Dist, EcoRI_Dist, HindIII_Dist,
++         names = c('SbfI', 'EcoRI', 'HindIII'),
++         xlab='Restriction enzyme used',
++         ylab='Inter-cutsite distance (bp)',
++         main='Comparison of cutsite distributions')
+\end{Sinput}
+\end{Schunk}
+\includegraphics{Tutorial_for_RADseq_Tools-023}
+
+With this information, the user can have an idea of how the different enzyme behave in the reference genome of interest, or related genomes. Based on this information, they can then decide which enzyme to use based on marker desity, raw number of sites, among other variables. 
+
 \section{References:}
 
 
-Andrews, K. R., Good, J. M., Miller, M. R., Luikart, G., \& Hohenlohe, P. A. (2016). Harnessing the power of RADseq for ecological and evolutionary genomics. \emph{Nature Reviews. Genetics}, 17(2), 81–92. doi.org/10.1038/nrg.2015.28
-
-Catchen, J. M., Hohenlohe, P. A., Bernatchez, L., Funk, W. C., Andrews, K. R. and Allendorf, F. W. (2017), Unbroken: RADseq remains a powerful tool for understanding the genetics of adaptation in natural populations. \emph{Mol Ecol Resour}, 17: 362–365. doi:10.1111/1755-0998.12669
-
-Lowry DB, Hoban S, Kelley JL, et al. (2017). Responsible RAD: Striving for best practices in population genomic studies of adaptation. \emph{Mol Ecol Resour}. 17:366–369. doi.org/10.1111/1755-0998.12677
-
-Narum, S. R., Buerkle, C. A., Davey, J. W., Miller, M. R. and Hohenlohe, P. A. (2013), Genotyping-by-sequencing in ecological and conservation genomics. \emph{Molecular Ecology}, 22: 2841–2847. doi: 10.1111/mec.12350
-
-
-
-
-
-
-
-
-
-Hello, this is a test. 
-\begin{Schunk}
-\begin{Sinput}
-> for(i in 1:10){
-+   print(i)
-+ }
-\end{Sinput}
-\begin{Soutput}
-[1] 1
-[1] 2
-[1] 3
-[1] 4
-[1] 5
-[1] 6
-[1] 7
-[1] 8
-[1] 9
-[1] 10
-\end{Soutput}
-\end{Schunk}
-This is a plot
-\begin{Schunk}
-\begin{Sinput}
-> plot(1:10,1:10)
-\end{Sinput}
-\end{Schunk}
-\includegraphics{Tutorial_for_RADseq_Tools-015}
+\footnotesize Andrews, K. R., Good, J. M., Miller, M. R., Luikart, G., \& Hohenlohe, P. A. (2016). Harnessing the power of RADseq for ecological and evolutionary genomics. \emph{Nature Reviews. Genetics}, 17(2), 81–92. doi.org/10.1038/nrg.2015.28
+\bigbreak
+\footnotesize Catchen, J. M., Hohenlohe, P. A., Bernatchez, L., Funk, W. C., Andrews, K. R. and Allendorf, F. W. (2017), Unbroken: RADseq remains a powerful tool for understanding the genetics of adaptation in natural populations. \emph{Mol Ecol Resour}, 17: 362–365. doi:10.1111/1755-0998.12669
+\bigbreak
+\footnotesize Lowry DB, Hoban S, Kelley JL, et al. (2017). Responsible RAD: Striving for best practices in population genomic studies of adaptation. \emph{Mol Ecol Resour}. 17:366–369. doi.org/10.1111/1755-0998.12677
+\bigbreak
+\footnotesize Narum, S. R., Buerkle, C. A., Davey, J. W., Miller, M. R. and Hohenlohe, P. A. (2013), Genotyping-by-sequencing in ecological and conservation genomics. \emph{Molecular Ecology}, 22: 2841–2847. doi: 10.1111/mec.12350
 
 
 
