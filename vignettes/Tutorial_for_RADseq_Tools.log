@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.12.8)  9 DEC 2017 12:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.12.8)  11 DEC 2017 11:33
 entering extended mode
 **./Tutorial_for_RADseq_Tools.tex
 (Tutorial_for_RADseq_Tools.tex
@@ -188,25 +188,25 @@ File: uni-global.def 2013/05/13 UCS: Unicode global data
 (Tutorial_for_RADseq_Tools.aux)
 \openout1 = `Tutorial_for_RADseq_Tools.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 7.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 7.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 9.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 9.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 7.
+LaTeX Font Info:    ... okay on input line 9.
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -280,30 +280,30 @@ File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ucs\uni-32.def"
 File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
 )
-LaTeX Font Info:    Try loading font information for T1+aett on input line 14.
+LaTeX Font Info:    Try loading font information for T1+aett on input line 23.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\ae\t1aett.fd"
 File: t1aett.fd 1997/11/16 Font definitions for T1/aett.
 ) [1
 
 {C:/Users/AngelRC/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-LaTeX Font Info:    Try loading font information for TS1+aett on input line 47.
+LaTeX Font Info:    Try loading font information for TS1+aett on input line 57.
 
 
 (C:/PROGRA~1/R/R-34~1.2/share/texmf/tex/latex\ts1aett.fd
 File: ts1aett.fd 
 )
-LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 47.
+LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 57.
 
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\base\ts1cmtt.fd"
 File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `TS1/aett/m/sl' in size <10> not available
-(Font)              Font shape `TS1/cmtt/m/sl' tried instead on input line 47.
+(Font)              Font shape `TS1/cmtt/m/sl' tried instead on input line 57.
 
 ! Undefined control sequence.
-l.63 ...\texttt{mySeqs} using the output of \textt
+l.76 ...\texttt{mySeqs} using the output of \textt
                                                   {process\_fasta}, and disp...
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -311,25 +311,25 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[2]
-<Tutorial_for_RADseq_Tools-008.pdf, id=15, pagebox=cropbox, 433.62pt x 433.62pt
+[2] [3]
+<Tutorial_for_RADseq_Tools-010.pdf, id=18, pagebox=cropbox, 433.62pt x 433.62pt
 >
-File: Tutorial_for_RADseq_Tools-008.pdf Graphic file (type pdf)
-<use Tutorial_for_RADseq_Tools-008.pdf>
-Package pdftex.def Info: Tutorial_for_RADseq_Tools-008.pdf  used on input line 
-127. on input line 127.
+File: Tutorial_for_RADseq_Tools-010.pdf Graphic file (type pdf)
+<use Tutorial_for_RADseq_Tools-010.pdf>
+Package pdftex.def Info: Tutorial_for_RADseq_Tools-010.pdf  used on input line 
+175. on input line 175.
 Package pdftex.def Info: Requested size: 276.00105pt x 276.0139pt on input line
- 127.
- [3] [4 <./Tutorial_for_RADseq_Tools-008.pdf>]
+ 175.
+ [4] [5 <./Tutorial_for_RADseq_Tools-010.pdf>]
 (Tutorial_for_RADseq_Tools.aux) ) 
 Here is how much of TeX's memory you used:
- 3159 strings out of 493312
- 46434 string characters out of 3138893
+ 3165 strings out of 493312
+ 46536 string characters out of 3138893
  102664 words of memory out of 3000000
- 6637 multiletter control sequences out of 15000+200000
- 19958 words of font info for 41 fonts, out of 3000000 for 9000
+ 6638 multiletter control sequences out of 15000+200000
+ 23104 words of font info for 47 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,4n,25p,1315b,282s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,4n,25p,1315b,280s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\AngelRC\AppData\Local\MiKTeX\2.9\fo
 nts\pk\ljfour\jknappen\ec\dpi600\tcst1000.pk><C:/Program Files/MiKTeX 2.9/fonts
 /type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
@@ -337,9 +337,9 @@ ublic/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
 fonts/cm/cmsltt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
 cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt1
 0.pfb>
-Output written on Tutorial_for_RADseq_Tools.pdf (4 pages, 95289 bytes).
+Output written on Tutorial_for_RADseq_Tools.pdf (5 pages, 101422 bytes).
 PDF statistics:
- 47 PDF objects out of 1000 (max. 8388607)
+ 50 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  10 words of extra memory for PDF output out of 10000 (max. 10000000)
 
