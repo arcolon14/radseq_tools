@@ -21,4 +21,11 @@ A vector of commonly used restriction enzymes and their corresponding cutsite se
 \examples{
 data(renz)
 
+#Select EcoRI enzyme
+
+ecoRI <- renz["ecoRI"]
+
+#Put in find_cuts
+
+find_cuts(myseqs, ecoRI)
 }
