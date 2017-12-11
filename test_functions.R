@@ -3,11 +3,12 @@
 setwd("~/GitHub/radseq_tools")
 
 # source of all functions
-source('./Functions.R')
+source('./R/Functions.R')
 
 # path to FASTA file
 path <- './test.fa'
 path <- './test_geno.fa.gz'
+path <- './inst/extdata/test_geno.fa.gz'
 
 # create sequence object
 Seqs <- process_fasta(path, 1)

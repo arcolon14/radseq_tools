@@ -17,20 +17,20 @@
 \end{center}
 
 
-\section*{1 Introduction:}
+\section{Introduction:}
 
 Restriction site-Associated DNA sequencing (RADseq) is a modern genomic sequencing technique that has greatly advanced the field of population genomics. As a reduced representation-sequencing method, RADseq has decreased per-individual sequencing costs, making genome-wide studies more widely accessible to the research community (Catchen, et al. 2017). Additionally, it allows for the cost-effective sequencing and genotyping of multiple individuals, which is particularly important when discerning genetic variation in natural populations (Narum, et al. 2013). Moreover, RADseq’s compatibility with multiple genomic approaches, including phylogenomics, de novo population genomics, and genomic scans, have made it a key player in modern population genomics (Andrews, et al. 2016).\\
 Although RADseq studies require relatively little previous information on the genome of interest, the selection of restriction enzymes and its subsequent effect on marker density remains one of RADseq’s limiting factors (Lowry, et al. 2017). The selection of a poor enzyme can then lead to genome undersampling, resulting in low marker density, or oversampling, affecting the resulting downstream coverage. Based on this, we developed an \texttt{R} package pipeline for the exploratory analysis of RADseq data to guide researchers in planning their study and improving data quality. \texttt{RADseq\_tools} estimates important information for the initial experimental design, including number of cutsites, and marker density and distribution for different user-defined restriction enzyme sites and reference genomes. Even when the reference of interest is not available, the user can explore with available genomes in related taxa and use this information to extrapolate the marker properties for their experiments. In addition, this package can assist with determining the cost of a RADseq experiment by providing estimates of expected coverage, number of samples per lane, and required read throughput. 
 
 
-\section*{2 Getting started:}
-\subsection*{2.1  Verifying R version}
+\section{Getting started:}
+\subsection{Verifying R version}
 To run \emph{RADseq\_Tools}, make sure you have a recent \texttt{R} installation. The package was written using \texttt{R version 3.4.2}, but should work with versions above \texttt{3.1.0}. To verify the installed \texttt{R} version, use:
 <<>>=
 R.version.string
 @
 
-\subsection*{2.2  Installation}
+\subsection{Installation}
 Install the \emph{RADseq\_Tools} package from \texttt{CRAN} using:
 
 <<eval=FALSE>>=
@@ -50,11 +50,11 @@ source('./../R/Functions.R')
 Additional information on the package can be found in:\\ \texttt{https://github.com/angelgr2/radseq\_tools}
 
 
-\section*{3 Tutorial:}
+\section{Tutorial:}
 
 This brief guide will provide examples of all the package's basic functions and arguments. It uses a test dataset available with the package. It consist of a small FASTA file containing the first 100Kb of sequence of six Three Spine Stickleback (\emph{Gasterosteus aculeatus}) chromosomes.
 
-\subsection*{3.1  Load and process reference sequence}
+\subsection{Load and process reference sequence}
 
 To begin, we need to load the reference sequence into a \texttt{RADseq\_Tools} object. This new \texttt{sequence} object can then be used to search restriction site. Create a variable containing the path to the reference sequence.  
 <<>>=
@@ -67,23 +67,66 @@ mySeqs <- process_fasta(fasta_dir, 10000)
 substr(mySeqs, 1, 60)
 @
 
-\subsection*{3.2  Find restriction sites in the reference sequences}
+\subsection{Find restriction sites in the reference sequences}
 The first part of finding the restriction cutsite position is defining the query to be searched, the sequence of the restriction enzyme. In this example, we are using the enzyme \texttt{SbfI}, which cuts at the sequence \texttt{CCTGCAGG}.
 <<>>=
 SbfI <- 'CCTGCAGG'
 @
-
 Once the restriction site sequence is defined, it will be searched in the stored sequences using the \texttt{find\_cuts} function. Using \texttt{gregexpr}, it will find all matches of the restriction site query in the reference sequences. The resulting output is a list of vectors, containing all the per-chromosome/scaffold match positions.
+\bigbreak
+Here, we see the cutsite position for the first three test sequences:
+
 <<>>=
 myCuts <- find_cuts(mySeqs, SbfI)
 
-myCuts
+myCuts[c(1,2,3)]
+@
+
+\subsection{Find cutsite distribution}
+After determining the position of the cutsites, it is also important to determine the distribution of cutsite in the genome, as it gives us an idea of the number of cutsites and the average inter-cutsite distance. The distribution can be calculated using the \texttt{cutsite\_distance} function. Using the cutsite position list resulting from the \texttt{find\_cuts} function, it will output a single vector containing the inter-cutsite distance for all cutsites in the genome.
+<<>>=
+cutDist <- cutsite_distance(myCuts)
+cutDist[1:10]
+@
+The resulting vector is compatible with all of \texttt{R} vector function, thus other statistical measures can be obtained. For example:
+<<fig=TRUE>>=
+summary(cutDist)
+hist(cutDist, xlab='Distance (bp)', 
+     ylab='Frequency', main='Cutsite distance distribution' )
+@
+
+\subsection{Find number of cutsites}
+In addition to finding the inter-cutsite distance distribution, we can also determine the total number of cutsites using the \texttt{number\_cutsites} functions. It takes as input the original cutiste positions object product of the \texttt{find\_cuts} function, and outputs a single numeric value.
+<<>>=
+nCuts <- number_cutsites(myCuts)
+nCuts
+@
+Alternatively, the number of cutsites can be manually calculated from the length of the cutsite distribution object.
+<<>>=
+length(cutDist)
+@
+
+\subsection{Estimate per-sample coverage}
+Using the estimations of cutsite distribution, the user can estimate the expected per-sample coverage when running a sequencing experiment using the \texttt{Per\_Sample\_Coverage} function. The function requires a number of cutsites (likely calculated with the \texttt{number\_cutsites} function), number of samples and the type of sequencing machine used, either Illumina HiSeq2500 (\texttt{'hiseq2500'}) or HiSeq4000 (\texttt{'hiseq4000'}) with their corresponding read throughput. The output is a vector contaning the extimated per-sample coverage for the machine's low, medium and high read throughput. 
+<<>>=
+nCuts <- 35000
+nSams <- 96
+illumina <- 'hiseq2500'
+Per_Sample_Coverage(nCuts, nSams, illumina)
+illumina <- 'hiseq4000'
+Per_Sample_Coverage(nCuts, nSams, illumina)
 @
 
 
-\subsection*{}
-\section*{4 Other applications:}
-\section*{5 References:}
+
+
+
+
+
+
+
+\section{Other applications:}
+\section{References:}
 
 
 Andrews, K. R., Good, J. M., Miller, M. R., Luikart, G., \& Hohenlohe, P. A. (2016). Harnessing the power of RADseq for ecological and evolutionary genomics. \emph{Nature Reviews. Genetics}, 17(2), 81–92. doi.org/10.1038/nrg.2015.28

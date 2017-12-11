@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.12.8)  11 DEC 2017 11:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6500 64-bit) (preloaded format=pdflatex 2017.12.8)  11 DEC 2017 12:41
 entering extended mode
 **./Tutorial_for_RADseq_Tools.tex
 (Tutorial_for_RADseq_Tools.tex
@@ -311,35 +311,43 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[2] [3]
-<Tutorial_for_RADseq_Tools-010.pdf, id=18, pagebox=cropbox, 433.62pt x 433.62pt
+[2]
+<Tutorial_for_RADseq_Tools-010.pdf, id=15, pagebox=cropbox, 433.62pt x 433.62pt
 >
 File: Tutorial_for_RADseq_Tools-010.pdf Graphic file (type pdf)
 <use Tutorial_for_RADseq_Tools-010.pdf>
 Package pdftex.def Info: Tutorial_for_RADseq_Tools-010.pdf  used on input line 
-175. on input line 175.
+145. on input line 145.
 Package pdftex.def Info: Requested size: 276.00105pt x 276.0139pt on input line
- 175.
- [4] [5 <./Tutorial_for_RADseq_Tools-010.pdf>]
-(Tutorial_for_RADseq_Tools.aux) ) 
+ 145.
+ [3] [4 <./Tutorial_for_RADseq_Tools-010.pdf>] [5]
+<Tutorial_for_RADseq_Tools-015.pdf, id=31, pagebox=cropbox, 433.62pt x 433.62pt
+>
+File: Tutorial_for_RADseq_Tools-015.pdf Graphic file (type pdf)
+<use Tutorial_for_RADseq_Tools-015.pdf>
+Package pdftex.def Info: Tutorial_for_RADseq_Tools-015.pdf  used on input line 
+245. on input line 245.
+Package pdftex.def Info: Requested size: 276.00105pt x 276.0139pt on input line
+ 245.
+ [6 <./Tutorial_for_RADseq_Tools-015.pdf>] (Tutorial_for_RADseq_Tools.aux) ) 
 Here is how much of TeX's memory you used:
- 3165 strings out of 493312
- 46536 string characters out of 3138893
- 102664 words of memory out of 3000000
- 6638 multiletter control sequences out of 15000+200000
+ 3171 strings out of 493312
+ 46854 string characters out of 3138893
+ 103664 words of memory out of 3000000
+ 6643 multiletter control sequences out of 15000+200000
  23104 words of font info for 47 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,4n,25p,1315b,280s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\AngelRC\AppData\Local\MiKTeX\2.9\fo
-nts\pk\ljfour\jknappen\ec\dpi600\tcst1000.pk><C:/Program Files/MiKTeX 2.9/fonts
-/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmsltt10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/
-cm/cmti10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt1
-0.pfb>
-Output written on Tutorial_for_RADseq_Tools.pdf (5 pages, 101422 bytes).
+ 41i,4n,25p,1315b,278s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C
+:\Users\AngelRC\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\tcs
+t1000.pk><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Prog
+ram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsltt10.pfb><C:/Program Fi
+les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
+Output written on Tutorial_for_RADseq_Tools.pdf (6 pages, 112130 bytes).
 PDF statistics:
- 50 PDF objects out of 1000 (max. 8388607)
+ 60 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 10 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 15 words of extra memory for PDF output out of 10000 (max. 10000000)
 
