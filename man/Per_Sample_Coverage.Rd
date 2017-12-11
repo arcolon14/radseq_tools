@@ -5,7 +5,7 @@
 Estimate coverage per sample
 }
 \description{
-This function will calculate the predicted per-sample coverage given the number of cutsites (from previous \code{number_cutsites()})in the genome and a user-defined number of samples. The user can also define the Illumina platform to be used, which will determine the range of raw reads used to calculate expected coverage. This function outputs a predicted range of coverages (low, medium, high) given the set range of reads that an Illumina sequencer can give per lane. 
+This function will calculate the predicted per-sample coverage given the number of cutsites (from previous \code{number_cutsites()}) in the genome and a user-defined number of samples. The user can also define the Illumina platform to be used, which will determine the range of raw reads used to calculate expected coverage. This function outputs a predicted range of coverages (low, medium, high) given the set range of reads that an Illumina sequencer can give per lane. 
 }
 \usage{
 Per_Sample_Coverage(num_cutsites, num_samples, sequencing_machine = NULL)

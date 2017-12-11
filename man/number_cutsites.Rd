@@ -13,7 +13,7 @@ number_cutsites(cutsite_list)
 
 \arguments{
   \item{cutsite_list}{
-An object product of \code{find_cuts()}.
+List containing the per-chromosome/scaffold cutsite position vectors. Argument is designed to be compatible with the output of the \code{find_cuts} function.
 }
 }
 
@@ -29,9 +29,9 @@ Kira Long
 \code{Per_Sample_Coverage()} \code{Samples_Per_Lane()} \code{DNA_Reads_Per_Lane()}
 }
 \examples{
-#Define parameters/get cutsite list
-cutsite_list <- list(1,2,3)
+#Cutsite position list (myCuts)
+myCuts 
 
-#Run argument in function
-number_cutsites(cutsite_list)
+#Calculate number of cutsites in myCuts
+nCuts <- number_cutsites(myCuts)
 }
