@@ -40,8 +40,9 @@ In chromosome 1, we have cutsites at positions 7, 19, 28 and 50. No cutsites wer
 
 \code{[[3]]}
 
-\code{[1] 12 30 36 42}}
+\code{[1] 12 30 36 42}
 }
+
 
 \author{
 Angel G. Rivera-Colon

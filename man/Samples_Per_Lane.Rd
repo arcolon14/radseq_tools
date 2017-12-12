@@ -43,5 +43,5 @@ data(illumina)
 #Run arguments in Function
 Samples_Per_Lane(numberCuts, coverage, "hiseq4000")
 
-  }
 }
+

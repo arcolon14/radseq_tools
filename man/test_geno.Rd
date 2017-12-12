@@ -41,3 +41,4 @@ path_fasta <- '/path/to/test_geno.fa.gz'
 # Feed it into `process_fasta`
 seq <- process_fasta(path_fasta)
 
+}
