@@ -29,9 +29,16 @@ Kira Long
 \code{Per_Sample_Coverage()} \code{Samples_Per_Lane()} \code{DNA_Reads_Per_Lane()}
 }
 \examples{
-#Cutsite position list (myCuts)
-myCuts 
+# Generate prior data
+myfasta <- system.file("inst/extdata", "test_geno.fa.gz", package = "RADseq_Tools")
+mySeqs <- process_fasta(myfasta, 10000)
+myEnz <- 'CTGCAG'
+cutPos <- find_cuts(mySeqs, myEnz)
 
-#Calculate number of cutsites in myCuts
-nCuts <- number_cutsites(myCuts)
+# 
+# For this function
+# 
+
+#Calculate number of cutsites in cutPos
+nCuts <- number_cutsites(cutPos)
 }

@@ -27,15 +27,25 @@ Angel G. Rivera-Colon
 
 
 \examples{
+# Generate prior data
+myfasta <- system.file("inst/extdata", "test_geno.fa.gz", package = "RADseq_Tools")
+mySeqs <- process_fasta(myfasta, 10000)
+myEnz <- 'CTGCAG'
+cutPos <- find_cuts(mySeqs, myEnz)
+
+#
+# For this function
+#
+
 # Find cutsite distance distribution in cutsite position list (cutPositions)
-cutDistribution <- cutsite_distance(cutPositions)
+cutDist <- cutsite_distance(cutPos)
 
 # Object is compatible with R vector functions
 # Obtain summary statistic for the cutsite distribution vector
-summary(cutDistribution)
+summary(cutDist)
 
 # Plot histogram of distribution
-hist(cutDistribution)
+hist(cutDist)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

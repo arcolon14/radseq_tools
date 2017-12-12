@@ -48,12 +48,19 @@ Angel G. Rivera-Colon
 }
 
 \examples{
+# Create sequences object
+myfasta <- system.file("inst/extdata", "test_geno.fa.gz", package = "RADseq_Tools")
+mySeqs <- process_fasta(myfasta, 10000)
+
+#
+#For this function
+#
+
 # Define restriction enzyme sequence
 myEnz <- 'CTGCAG'
 
-# Find position of enzyme sequence in 
-# genomic sequence object (mySeqs)
-cutPositions <- find_cuts(mySeqs, myEnz)
+# Find position of cutsites in sequences
+cutPos <- find_cuts(mySeqs, myEnz)
 }
 
 \seealso{
