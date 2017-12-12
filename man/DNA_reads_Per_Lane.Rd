@@ -1,5 +1,5 @@
-\name{DNA_reads_Per_Lane}
-\alias{DNA_reads_Per_Lane}
+\name{DNA_Reads_Per_Lane}
+\alias{DNA_Reads_Per_Lane}
 
 \title{
 Estimate per-lane reads
@@ -8,7 +8,7 @@ Estimate per-lane reads
 This function calculates how many reads are required from the sequencing process in order to obtain a desired coverage for a given number of samples and cutsites. This function is to assist in determining the necessary lanes of sequencing required, and/or the Illumina platform to use for a given experiment.
 }
 \usage{
-DNA_reads_Per_Lane(num_cutsites, num_samples, desired_coverage = NULL)
+DNA_Reads_Per_Lane(num_cutsites, num_samples, desired_coverage = NULL)
 }
 
 \arguments{
@@ -41,5 +41,5 @@ samples <- 96
 coverage <- 40
 
 #Run arguments in Function
-DNA_reads_Per_Lane(numberCuts, samples, coverage)
+DNA_Reads_Per_Lane(numberCuts, samples, coverage)
 }
