@@ -1,5 +1,5 @@
-\name{sequencing_machines}
-\alias{sequencing_machines}
+\name{illumina}
+\alias{illumina}
 \docType{data}
 \title{
 Sequencing machine read throughput
@@ -17,7 +17,7 @@ Vector containing the read throughput distribution for commonly used sequencing 
 }
 
 \examples{
-data(sequencing_machines)
+data(illumina)
 
 # calculate expected reads in `n` lanes
 n_lanes <- 3

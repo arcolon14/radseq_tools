@@ -19,7 +19,7 @@ Number of cutsites present in the genome. This number can be the output from \co
 Number of the coverage the user wishes to keep. If no value is provided, the default value is \code{30}.
 }
   \item{sequencing_machine}{
-Illumina sequencing platform that the user wants to use for sequencing. Argument has two parameters, \code{hiseq2500} and \code{hiseq4000}, each has different read throughputs. If no machine is provided, the function will default to \code{hiseq2500}.
+Illumina sequencing platform that the user wants to use for sequencing. It requires the loading of the loading of the \code{illumina} dataset.Argument has two parameters, \code{hiseq2500} and \code{hiseq4000}, each has different read throughputs. If no machine is provided, the function will default to \code{hiseq2500}.
 }
 }
 
@@ -38,6 +38,7 @@ Kira Long
 #Define parameters
 numberCuts <- 39000
 coverage <- 30
+data(illumina)
 
 #Run arguments in Function
 Samples_Per_Lane(numberCuts, coverage, "hiseq4000")

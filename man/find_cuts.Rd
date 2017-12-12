@@ -16,7 +16,7 @@ find_cuts(genomic_seq, restriction_site_seq)
 Vector containing per-chromosome/scaffold genomic sequence strings. Argument is designed to be compatible with the output of the \code{process_fasta} function. (\code{x} from \code{gregexpr} function)
 }
 \item{restriction_site_seq}{
-String containing the restriction site sequence of interest. (\code{pattern} from \code{gregexpr} function). Sequence can be obtained from the \code{renz} object. 
+String containing the restriction site sequence of interest. (\code{pattern} from \code{gregexpr} function). Sequence can be obtained from the \code{renz} dataset. 
 }
 }
 
@@ -57,7 +57,8 @@ mySeqs <- process_fasta(myfasta, 10000)
 #
 
 # Define restriction enzyme sequence
-myEnz <- 'CTGCAG'
+data(renz)
+myEnz <- renz["sbfI"]
 
 # Find position of cutsites in sequences
 cutPos <- find_cuts(mySeqs, myEnz)
