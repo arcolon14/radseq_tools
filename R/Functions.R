@@ -17,7 +17,7 @@ process_fasta <- function(path_to_fasta,
     min_seq_len <- 5000
   }
   
-  fa <- file(path_to_fasta, 'r')
+  fa <- gzfile(path_to_fasta, 'rt')
   all_seq <- c()      # Final vector containing all sequences in the reference
   loc_seq <- c()      # Local vector containing per-chromosome/scaffold sequences
   long_seq <- NULL    # Variable containing the merged sequences
