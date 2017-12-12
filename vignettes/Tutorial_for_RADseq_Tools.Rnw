@@ -45,7 +45,7 @@ library(RADseq_Tools)
 
 Alternatively, source the functions using:
 <<>>=
-source('./../R/Functions.R')
+source("./../R/Functions.R")
 @
 
 Additional information on the package can be found in:\\ \texttt{https://github.com/angelgr2/radseq\_tools}
@@ -59,8 +59,15 @@ This brief guide will provide examples of all the package's basic functions and 
 
 To begin, we need to load the reference sequence into a \texttt{RADseq\_Tools} object. This new \texttt{sequence} object can then be used to search for restriction sites. Create a variable containing the path to the reference sequence.  
 <<>>=
-fasta_dir <- './../inst/extdata/test_geno.fa.gz'
+fasta_dir <- "./../inst/extdata/test_geno.fa.gz"
 @
+Because this test dataset is available with the package installation, it can also be obtained from the \texttt{extdata} by using:
+<<eval=FALSE>>=
+fasta_dir <- system.file("inst/extdata",
+                         "test_geno.fa.gz", 
+                         package = "RADseq_Tools")
+@
+
 This path variable is then the input of the \texttt{process\_fasta} function, which reads the file provided in the path, converting multi-line sequence objects into single line sequences. Sequences bellow 10kb are filtered and not included in the resulting sequences object. The output of the function is a vector containing the sequence strings for each of the chromosomes/scaffofds in the FASTA file. Here, we are creating the object \texttt{mySeqs} using the output of \textt{process\_fasta}, and displaying the first few nucleotides for each of the chromosomes. 
 <<>>=
 mySeqs <- process_fasta(fasta_dir, 10000)
@@ -76,7 +83,7 @@ renz
 
 In this example, we are using the enzyme \texttt{SbfI}, which cuts at the sequence \texttt{CCTGCAGG}.
 <<>>=
-SbfI <- renz['sbfI']
+SbfI <- renz["sbfI"]
 SbfI
 @
 Once the restriction site sequence is defined, it will be searched in the stored sequences using the \texttt{find\_cuts} function. Using \texttt{gregexpr}, it will find all matches of the restriction site query in the reference sequences. The resulting output is a list of vectors, containing all the per-chromosome/scaffold match positions.
@@ -98,8 +105,8 @@ cutDist[1:10]
 The resulting vector is compatible with all \texttt{R} vector functions, thus other statistical measures can be obtained. For example:
 <<fig=TRUE>>=
 summary(cutDist)
-hist(cutDist, xlab='Distance (bp)', 
-     ylab='Frequency', main='Cutsite distance distribution' )
+hist(cutDist, xlab="Distance (bp)", 
+     ylab="Frequency", main="Cutsite distance distribution" )
 @
 
 \subsection{Find number of cutsites}
@@ -114,13 +121,13 @@ length(cutDist)
 @
 
 \subsection{Estimate per-sample coverage}
-Using the estimations of cutsite distribution, the user can estimate the expected per-sample coverage when running a sequencing experiment using the \texttt{Per\_Sample\_Coverage} function. The function requires the number of cutsites (likely calculated with the \texttt{number\_cutsites} function), number of samples, and the type of sequencing machine used, either Illumina HiSeq2500 (\texttt{'hiseq2500'}) or HiSeq4000 (\texttt{'hiseq4000'}) with their corresponding read throughput. The output is a vector contaning the estimated per-sample coverage for the machine's low, medium and high read throughput. 
+Using the estimations of cutsite distribution, the user can estimate the expected per-sample coverage when running a sequencing experiment using the \texttt{Per\_Sample\_Coverage} function. The function requires the number of cutsites (likely calculated with the \texttt{number\_cutsites} function), number of samples, and the type of sequencing machine used, either Illumina HiSeq2500 (\texttt{"hiseq2500"}) or HiSeq4000 (\texttt{"hiseq4000"}) with their corresponding read throughput. The output is a vector contaning the estimated per-sample coverage for the machine's low, medium and high read throughput. 
 <<>>=
 nCuts <- 35000     # Number of cutsites.
 nSams <- 96        # Number of multiplexed samples 
-illumina <- 'hiseq2500'
+illumina <- "hiseq2500"
 Per_Sample_Coverage(nCuts, nSams, illumina)
-illumina <- 'hiseq4000'
+illumina <- "hiseq4000"
 Per_Sample_Coverage(nCuts, nSams, illumina)
 @
 
@@ -129,9 +136,9 @@ The package can also be used to calculate an estimation of the number of samples
 <<>>=
 nCuts <- 35000     # Number of cutsites.   
 cover <- 45        # Target per-sample average coverage
-illumina <- 'hiseq2500'
+illumina <- "hiseq2500"
 Samples_Per_Lane(nCuts, cover, illumina)
-illumina <- 'hiseq4000'
+illumina <- "hiseq4000"
 Samples_Per_Lane(nCuts, cover, illumina)
 @
 
@@ -151,28 +158,28 @@ An important application of the \texttt{RADseq\_Tools} package is to compare the
 \bigbreak
 To begin, we will process the test reference genome as before, storing the sequences in the \texttt{mySeqs} object. 
 <<>>=
-fasta_dir <- './../inst/extdata/test_geno.fa.gz'
+fasta_dir <- "./../inst/extdata/test_geno.fa.gz"
 mySeqs <- process_fasta(fasta_dir, 10000)
 @
 
 After storing the sequences, we will find cutsites using three different restriction enzymes: \texttt{SbfI}, \texttt{EcoRI} and \texttt{HindIII}. The cutsite sequences are available in the \texttt{renz} vector. 
 <<>>=
 # For SbfI
-SbfI <- renz['sbfI']
+SbfI <- renz["sbfI"]
 SbfI_Cuts <- find_cuts(mySeqs, SbfI)
 SbfI_Dist <- cutsite_distance(SbfI_Cuts)
 SbfI_num <- number_cutsites(SbfI_Cuts)
 @
 <<>>=
 # For EcoRI
-EcoRI <- renz['ecoRI']
+EcoRI <- renz["ecoRI"]
 EcoRI_Cuts <- find_cuts(mySeqs, EcoRI)
 EcoRI_Dist <- cutsite_distance(EcoRI_Cuts)
 EcoRI_num <- number_cutsites(EcoRI_Cuts)
 @
 <<>>=
 # For HindIII
-HindIII <- renz['hindIII']
+HindIII <- renz["hindIII"]
 HindIII_Cuts <- find_cuts(mySeqs, HindIII)
 HindIII_Dist <- cutsite_distance(HindIII_Cuts)
 HindIII_num <- number_cutsites(HindIII_Cuts)
@@ -195,10 +202,10 @@ HindIII_num
 And have completely different inter-cutsite distance distributions:
 <<fig=TRUE>>=
 boxplot(SbfI_Dist, EcoRI_Dist, HindIII_Dist,
-        names = c('SbfI', 'EcoRI', 'HindIII'),
-        xlab='Restriction enzyme used',
-        ylab='Inter-cutsite distance (bp)',
-        main='Comparison of cutsite distributions')
+        names = c("SbfI", "EcoRI", "HindIII"),
+        xlab="Restriction enzyme used",
+        ylab="Inter-cutsite distance (bp)",
+        main="Comparison of cutsite distributions")
 @
 
 With this information, the user can have an idea of how the different enzymes behave in the reference genome of interest, or related genomes. Based on this information, the user can then decide which enzyme to use based on marker desity and raw number of sites, among other variables. 
