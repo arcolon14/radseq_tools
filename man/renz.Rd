@@ -25,7 +25,4 @@ data(renz)
 
 ecoRI <- renz["ecoRI"]
 
-#Put in find_cuts
-
-find_cuts(myseqs, ecoRI)
 }

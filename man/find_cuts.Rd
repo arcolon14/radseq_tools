@@ -50,7 +50,7 @@ Angel G. Rivera-Colon
 
 \examples{
 # Create sequences object
-myfasta <- system.file("inst/extdata", "test_geno.fa.gz", package = "RADseq_Tools")
+myfasta <- system.file("extdata", "test_geno.fa.gz", package = "RADseqTools")
 mySeqs <- process_fasta(myfasta, 10000)
 
 #
