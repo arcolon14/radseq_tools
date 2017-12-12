@@ -13,7 +13,7 @@ process_fasta(path_to_fasta, min_seq_len)
 
 \arguments{
   \item{path_to_fasta}{
-Path to FASTA file. It can be zipped (\code{.gz}) or unzipped. 
+Path to a gzipped FASTA file.  
 }
 \item{min_seq_len}{
 (\code{int}) Minimum sequence length. Sequences smaller than this value will not be included in the \code{sequences} object. Default: (\code{5000}). 
