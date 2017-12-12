@@ -43,8 +43,7 @@ cutDist <- cutsite_distance(cutPos)
 # Object is compatible with R vector functions
 # Obtain summary statistic for the cutsite distribution vector
 summary(cutDist)
-
-# Plot histogram of distribution
-hist(cutDist)
+mean(cutDist)
+sd(cutDist)
 }
 
