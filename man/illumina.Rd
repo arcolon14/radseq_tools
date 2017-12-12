@@ -7,7 +7,7 @@ Sequencing machine read throughput
 \description{
 Vector containing the read throughput distribution for commonly used sequencing machines. Contains expected values for low, medium and high read throughputs for the Illumina HiSeq2500 and Illumina HiSeq4000 machines. Dataset is used in as part of the \code{Samples_Per_Lane} and \code{Per_Sample_Coverage} functions.
 }
-\usage{data("sequencing_machines")}
+\usage{data("illumina")}
 \format{
   2 vectors containing 3 values each. Each value corresponds to a 'low', 'med' and 'hi' throughput.
   \describe{

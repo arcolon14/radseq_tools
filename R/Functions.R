@@ -5,7 +5,7 @@
 #
 # 1. Read and process FASTA File
 #
-process_fasta <- function(fasta_path, 
+process_fasta <- function(path_to_fasta, 
                           min_seq_len=NULL){
   # Function to read FASTA and extract sequences. 
   # It converts multi-line sequences into single-line sequences.
@@ -17,7 +17,7 @@ process_fasta <- function(fasta_path,
     min_seq_len <- 5000
   }
   
-  fa <- file(fasta_path, 'r')
+  fa <- file(path_to_fasta, 'r')
   all_seq <- c()      # Final vector containing all sequences in the reference
   loc_seq <- c()      # Local vector containing per-chromosome/scaffold sequences
   long_seq <- NULL    # Variable containing the merged sequences
@@ -74,9 +74,9 @@ renz <- c(
 #
 # 2. Find cutsites in reference sequence
 #
-find_cuts <- function(sequences, cutsite){
+find_cuts <- function(genomic_seq, restriction_site_seq){
   # Function to find restriction cutsites in a sequence of interest
-  # For restriction site 'cutsite', find all the position is appears on sequence 'sequence'. 
+  # For restriction site 'restriction_site_seq', find all the position is appears on sequence 'genomic_seq'. 
   # Works on output of `process_fasta` function, vector containing multiple sequences.  
   # Returns a vector containing all the positions (indexes) of the cutsites in the sequence of interest. 
   # Final output is a list containing the vector positions for each of the sequences of interest. 
@@ -84,9 +84,9 @@ find_cuts <- function(sequences, cutsite){
   
   final_cut <- list()           # final output list, contains all cut vectors
   idx <- 1                      # index of final_cut list
-  for(seq in sequences){
+  for(seq in genomic_seq){
     # Find string `cutsite` in string `seq`
-    pos <- gregexpr(cutsite, seq, fixed=T, useBytes=T)
+    pos <- gregexpr(restriction_site_seq, seq, fixed=T, useBytes=T)
     # Extract the position vector from regex object
     cuts <- pos[[1]][1:length(pos[[1]])]
     # If cut object is not `-1` (no objects found), append it to the final list
@@ -141,12 +141,6 @@ number_cutsites <- function(cutsite_list){ #Cutsite_list is an object product of
   return(count)
 }
 
-#Defining sequencing machines for functions 5 and 6
-hiseq2500 <- c(2.2e8, 3.1e8, 4.0e8)
-names(hiseq2500) <- c('Low', 'Med', 'Hi')
-
-hiseq4000 <- c(5.0e8, 7.5e8, 1.0e9)
-names(hiseq4000) <- c('Low', 'Med', 'Hi')
 
 #
 #5. Find the coverage per sample
