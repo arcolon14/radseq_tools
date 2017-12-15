@@ -1,5 +1,5 @@
 # Functions for the RADTools package
-# BitBucket repository: https://bitbucket.org/angelgr2/radseq_tools
+# BitBucket repository: https://github.com/angelgr2/radseq_tools
 
 
 #
@@ -17,7 +17,7 @@ process_fasta <- function(path_to_fasta,
     min_seq_len <- 5000
   }
   
-  fa <- gzfile(path_to_fasta, 'rt')
+  fa <- file(path_to_fasta, 'r')
   all_seq <- c()      # Final vector containing all sequences in the reference
   loc_seq <- c()      # Local vector containing per-chromosome/scaffold sequences
   long_seq <- NULL    # Variable containing the merged sequences
@@ -153,6 +153,10 @@ Per_Sample_Coverage <- function(num_cutsites,                  #Number of cutsit
   #in the genome, number of samples, and the type
   #of illumina machine
   #Function by Kira Long
+  
+  #obtain machine information form `illumina` dataset
+  data(illumina)
+  
   if(is.null(sequencing_machine)){                    #If no machine is provided, function will default hiseq2500
     sequencing_machine <- "hiseq2500"
   }
@@ -179,6 +183,10 @@ Samples_Per_Lane <- function(num_cutsites,
   #get a desired, set coverage based on the number of cutsites in your genome and the illumina 
   #machine used to sequence
   #Function by Kira Long
+  
+  #obtain machine information form `illumina` dataset
+  data(illumina)
+  
   if(is.null(desired_coverage)){                      #If no desired coverage is provided, function will default to 30
     desired_coverage <- 30                            #as 30 is minimum to identify heterozygotes
   }
