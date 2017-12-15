@@ -65,7 +65,7 @@ process_fasta <- function(path_to_fasta,
       
       # Increase size of vector if too small
       if (idx > length(loc_seq)){
-        loc_seq <- c(loc_seq, character(1e6))
+        loc_seq <- c(loc_seq, character(5e5))
       }
       loc_seq[idx] <- line
       
