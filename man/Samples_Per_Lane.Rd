@@ -8,7 +8,9 @@ Estimate the number of samples per single Illumina lane
 This function calculates the estimated maximum number of samples a user can multiplex in one Illumina lane given the number of cutsites, while maintaining a desired user-defined coverage.
 }
 \usage{
-Samples_Per_Lane(num_cutsites, desired_coverage = NULL, sequencing_machine = NULL)
+Samples_Per_Lane(num_cutsites,
+                 desired_coverage = NULL,
+                 sequencing_machine = NULL)
 }
 
 \arguments{

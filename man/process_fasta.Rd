@@ -32,7 +32,9 @@ Angel G. Rivera-Colon
 
 \examples{
 # Path to FASTA file
-myfasta <- system.file("extdata", "test_geno.fa.gz", package = "RADseqTools")
+myfasta <- system.file("extdata",
+                       "test_geno.fa.gz",
+                       package = "RADseqTools")
 
 # Create a sequences object
 mySeqs <- process_fasta(myfasta, 10000)

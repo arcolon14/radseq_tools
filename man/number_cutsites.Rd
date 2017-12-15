@@ -30,7 +30,9 @@ Kira Long
 }
 \examples{
 # Generate prior data
-myfasta <- system.file("extdata", "test_geno.fa.gz", package = "RADseqTools")
+myfasta <- system.file("extdata",
+                       "test_geno.fa.gz", 
+                       package = "RADseqTools")
 mySeqs <- process_fasta(myfasta, 10000)
 myEnz <- 'CTGCAG'
 cutPos <- find_cuts(mySeqs, myEnz)

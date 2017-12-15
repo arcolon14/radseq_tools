@@ -28,7 +28,9 @@ Angel G. Rivera-Colon
 
 \examples{
 # Generate prior data
-myfasta <- system.file("extdata", "test_geno.fa.gz", package = "RADseqTools")
+myfasta <- system.file("extdata", 
+                       "test_geno.fa.gz",
+                       package = "RADseqTools")
 mySeqs <- process_fasta(myfasta, 10000)
 myEnz <- 'CTGCAG'
 cutPos <- find_cuts(mySeqs, myEnz)
@@ -37,7 +39,7 @@ cutPos <- find_cuts(mySeqs, myEnz)
 # For this function
 #
 
-# Find cutsite distance distribution in cutsite position list (cutPositions)
+# Find cutsite distance distribution in cutPos
 cutDist <- cutsite_distance(cutPos)
 
 # Object is compatible with R vector functions
