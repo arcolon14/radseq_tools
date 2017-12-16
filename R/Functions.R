@@ -162,6 +162,11 @@ Per_Sample_Coverage <- function(num_cutsites,                  #Number of cutsit
   #of illumina machine
   #Function by Kira Long
   
+  #Error message for sequencing machine
+  if(!is.element(sequencing_machine, c('hiseq2500', 'hiseq4000', NULL))){
+    stop('Options for sequencing machine: \'hiseq2500\'(default) or \'hiseq4000\'')
+  }
+  
   #obtain machine information form `illumina` dataset
   hiseq2500 <- NULL                                   #To fix R CMD check note
   hiseq4000 <- NULL                                   #To fix R CMD check note
@@ -209,6 +214,8 @@ Samples_Per_Lane <- function(num_cutsites,
     ReadsPerLane <- hiseq2500                         #per lane in the desired sequencer with the range
   }else if(sequencing_machine == "hiseq4000"){        #of low, medium, or high total reads per lane
     ReadsPerLane <- hiseq4000
+  }else if(!is.element(sequencing_machine, c('hiseq2500', 'hiseq4000'))){
+     stop('Options for sequencing machine: \'hiseq2500\' (default) or \'hiseq4000\'')
   }
   RADtags <- num_cutsites*2
   min_DNA_seqs <- ReadsPerLane/desired_coverage
@@ -216,6 +223,8 @@ Samples_Per_Lane <- function(num_cutsites,
   return(floor(estimated_num_samples))
 }
 
+Samples_Per_Lane(30000, 30, 'hiseq200')
+Samples_Per_Lane(30000, 30, 'hiseq2500')
 
 #
 # 7. Find the number of DNA sequence reads
