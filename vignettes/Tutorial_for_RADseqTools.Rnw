@@ -122,12 +122,7 @@ length(cutDist)
 @
 
 \subsection{Estimate per-sample coverage}
-Using the estimations of cutsite distribution, the user can estimate the expected per-sample coverage when running a sequencing experiment using the \texttt{Per\_Sample\_Coverage} function. The function requires the number of cutsites (likely calculated with the \texttt{number\_cutsites} function), number of samples, and the type of sequencing machine used, either Illumina HiSeq2500 (\texttt{"hiseq2500"}) or HiSeq4000 (\texttt{"hiseq4000"}) with their corresponding read throughput. These can be accessed throught the \texttt{illumina} dataset available with the package.
-<<>>=
-data(illumina)
-@
-
-The output is a vector contaning the estimated per-sample coverage for the machine's low, medium and high read throughput. Here's an example:
+Using the estimations of cutsite distribution, the user can estimate the expected per-sample coverage when running a sequencing experiment using the \texttt{Per\_Sample\_Coverage} function. The function requires the number of cutsites (likely calculated with the \texttt{number\_cutsites} function), number of samples, and the type of sequencing machine used, either Illumina HiSeq2500 (\texttt{"hiseq2500"}) or HiSeq4000 (\texttt{"hiseq4000"}) with their corresponding read throughput (available in the function). The output is a vector contaning the estimated per-sample coverage for the machine's low, medium and high read throughput. Here's an example:
 <<>>=
 nCuts <- 35000         # Number of cutsites.
 nSams <- 96            # Number of multiplexed samples 
