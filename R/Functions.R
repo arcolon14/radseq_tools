@@ -199,11 +199,6 @@ Samples_Per_Lane <- function(num_cutsites,
   #machine used to sequence
   #Function by Kira Long
   
-  #obtain machine information form `illumina` dataset
-  #hiseq2500 <- NULL                                   #To fix R CMD check note
-  #hiseq4000 <- NULL                                   #To fix R CMD check note
-  #data(illumina)
-  
   # Define sequencing machines
   hiseq2500 <- c(2.2e8, 3.1e8, 4.0e8)
   names(hiseq2500) <- c('Low', 'Med', 'Hi')

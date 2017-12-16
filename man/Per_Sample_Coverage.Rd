@@ -41,9 +41,10 @@ Kira Long
 # define parameters
 numberCuts <- 39000
 numberSamples <- 96
-data(illumina)
 
 #Run arguments in function
-Per_Sample_Coverage(numberCuts, numberSamples, "hiseq2500")
+Per_Sample_Coverage(numberCuts, 
+                    numberSamples,
+                    "hiseq2500")
 
 }

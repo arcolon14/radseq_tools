@@ -40,10 +40,11 @@ Kira Long
 #Define parameters
 numberCuts <- 39000
 coverage <- 30
-data(illumina)
 
 #Run arguments in Function
-Samples_Per_Lane(numberCuts, coverage, "hiseq4000")
+Samples_Per_Lane(numberCuts,
+                 coverage,
+                 "hiseq4000")
 
 }
 
