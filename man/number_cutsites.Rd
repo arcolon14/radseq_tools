@@ -5,7 +5,7 @@
 Determining the number of cutsites
 }
 \description{
-This function determines the total number of cutsites found in the genome by counting the number of cutsites from a list of cutsites made from previous function \code{find_cuts()}. Output can serve as an input for functions. 
+This function determines the total number of cutsites found in the genome by counting the number of cutsites from a list of cutsites made from previous function \code{find_cuts}. Output can serve as an input for functions. 
 }
 \usage{
 number_cutsites(cutsite_list)
@@ -26,8 +26,9 @@ Kira Long
 }
 
 \seealso{
-\code{Per_Sample_Coverage()} \code{Samples_Per_Lane()} \code{DNA_Reads_Per_Lane()}
+\code{\link{find_cuts}}
 }
+
 \examples{
 # Generate prior data
 myfasta <- system.file("extdata",

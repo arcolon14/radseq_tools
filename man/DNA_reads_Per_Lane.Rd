@@ -34,7 +34,7 @@ Kira Long
 }
 
 \seealso{
-\code{number_cutsites()}
+\code{\link{number_cutsites}}
 }
 \examples{
 #Define parameters

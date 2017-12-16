@@ -25,6 +25,9 @@ Returns a numeric atomic vector of genome-wide inter-cutsite distances. It is co
 Angel G. Rivera-Colon
 }
 
+\seealso{
+\code{\link{find_cuts}}
+}
 
 \examples{
 # Generate prior data

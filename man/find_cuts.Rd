@@ -68,7 +68,8 @@ cutPos <- find_cuts(mySeqs, myEnz)
 }
 
 \seealso{
-\code{\link{gregexpr}}
+\code{\link{process_fasta}}
+\code{\link{renz}}
 }
 
 
