@@ -77,13 +77,7 @@ process_fasta <- function(path_to_fasta,
   return(all_seq)  # output final sequence vector
 }
 
-# Vector containing commonly used restriction enzymes
-renz <- c(
-  pstI = 'CTGCAG',
-  sbfI = 'CCTGCAGG',
-  ecoRI = 'GAATTC',
-  hindIII = 'AAGCTT'
-)
+
 
 #
 # 2. Find cutsites in reference sequence
@@ -200,7 +194,6 @@ Samples_Per_Lane <- function(num_cutsites,
   #machine used to sequence
   #Function by Kira Long
   
-  #obtain machine information form `illumina` dataset
   #obtain machine information form `illumina` dataset
   hiseq2500 <- NULL                                   #To fix R CMD check note
   hiseq4000 <- NULL                                   #To fix R CMD check note
