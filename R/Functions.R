@@ -162,15 +162,11 @@ Per_Sample_Coverage <- function(num_cutsites,                  #Number of cutsit
   #of illumina machine
   #Function by Kira Long
   
-  #Error message for sequencing machine
-  if(!is.element(sequencing_machine, c('hiseq2500', 'hiseq4000', NULL))){
-    stop('Options for sequencing machine: \'hiseq2500\'(default) or \'hiseq4000\'')
-  }
-  
-  #obtain machine information form `illumina` dataset
-  hiseq2500 <- NULL                                   #To fix R CMD check note
-  hiseq4000 <- NULL                                   #To fix R CMD check note
-  data(illumina)
+  # Define sequencing machines
+  hiseq2500 <- c(2.2e8, 3.1e8, 4.0e8)
+  names(hiseq2500) <- c('Low', 'Med', 'Hi')
+  hiseq4000 <- c(5.0e8, 7.5e8, 1.0e9)
+  names(hiseq4000) <- c('Low', 'Med', 'Hi')
   
   if(is.null(sequencing_machine)){                    #If no machine is provided, function will default hiseq2500
     sequencing_machine <- "hiseq2500"
@@ -180,7 +176,11 @@ Per_Sample_Coverage <- function(num_cutsites,                  #Number of cutsit
 	#per lane in the desired sequencer with the range
   }else if(sequencing_machine == "hiseq4000"){        #of low, medium, or high total reads per lane
     ReadsPerLane <- hiseq4000
+  }# Error if sequencing machine is wrong
+  else if(!is.element(sequencing_machine, c('hiseq2500', 'hiseq4000'))){
+    stop('Options for sequencing machine: \'hiseq2500\'(default) or \'hiseq4000\'')
   }
+  
   RADtags <- num_cutsites*2                           #Determines your number of RADtags
   DNAseqs <- num_samples * RADtags                    #Determines how many DNA sequences you will get from all samples
   coverage <- ReadsPerLane/DNAseqs                    #Calculates your coverage
@@ -200,9 +200,15 @@ Samples_Per_Lane <- function(num_cutsites,
   #Function by Kira Long
   
   #obtain machine information form `illumina` dataset
-  hiseq2500 <- NULL                                   #To fix R CMD check note
-  hiseq4000 <- NULL                                   #To fix R CMD check note
-  data(illumina)
+  #hiseq2500 <- NULL                                   #To fix R CMD check note
+  #hiseq4000 <- NULL                                   #To fix R CMD check note
+  #data(illumina)
+  
+  # Define sequencing machines
+  hiseq2500 <- c(2.2e8, 3.1e8, 4.0e8)
+  names(hiseq2500) <- c('Low', 'Med', 'Hi')
+  hiseq4000 <- c(5.0e8, 7.5e8, 1.0e9)
+  names(hiseq4000) <- c('Low', 'Med', 'Hi')
   
   if(is.null(desired_coverage)){                      #If no desired coverage is provided, function will default to 30
     desired_coverage <- 30                            #as 30 is minimum to identify heterozygotes
@@ -212,9 +218,15 @@ Samples_Per_Lane <- function(num_cutsites,
   }
   if(sequencing_machine == "hiseq2500"){              #This if statement determines the number of reads
     ReadsPerLane <- hiseq2500                         #per lane in the desired sequencer with the range
-  }else if(sequencing_machine == "hiseq4000"){        #of low, medium, or high total reads per lane
-    ReadsPerLane <- hiseq4000
   }
+  else if(sequencing_machine == "hiseq4000"){         #of low, medium, or high total reads per lane
+    ReadsPerLane <- hiseq4000
+  } # Error if sequencing machine is wrong
+  else if(!is.element(sequencing_machine, c('hiseq2500', 'hiseq4000'))){
+    stop('Options for sequencing machine: \'hiseq2500\'(default) or \'hiseq4000\'')
+  }
+  
+  
   RADtags <- num_cutsites*2
   min_DNA_seqs <- ReadsPerLane/desired_coverage
   estimated_num_samples <- min_DNA_seqs/RADtags
