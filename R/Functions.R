@@ -223,8 +223,6 @@ Samples_Per_Lane <- function(num_cutsites,
   return(floor(estimated_num_samples))
 }
 
-Samples_Per_Lane(30000, 30, 'hiseq200')
-Samples_Per_Lane(30000, 30, 'hiseq2500')
 
 #
 # 7. Find the number of DNA sequence reads
