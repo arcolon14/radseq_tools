@@ -169,6 +169,8 @@ Per_Sample_Coverage <- function(num_cutsites,                  #Number of cutsit
   #Function by Kira Long
   
   #obtain machine information form `illumina` dataset
+  hiseq2500 <- NULL                                   #To fix R CMD check note
+  hiseq4000 <- NULL                                   #To fix R CMD check note
   data(illumina)
   
   if(is.null(sequencing_machine)){                    #If no machine is provided, function will default hiseq2500
@@ -199,6 +201,9 @@ Samples_Per_Lane <- function(num_cutsites,
   #Function by Kira Long
   
   #obtain machine information form `illumina` dataset
+  #obtain machine information form `illumina` dataset
+  hiseq2500 <- NULL                                   #To fix R CMD check note
+  hiseq4000 <- NULL                                   #To fix R CMD check note
   data(illumina)
   
   if(is.null(desired_coverage)){                      #If no desired coverage is provided, function will default to 30
