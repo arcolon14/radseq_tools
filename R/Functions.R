@@ -141,7 +141,7 @@ number_cutsites <- function(cutsite_list){ #Cutsite_list is an object product of
   count <- 0
   for (i in 1:length(cutsite_list)){
     #Skip cut vector if it contains NA i.e. a cutsite was not found in the sequence
-    if(is.na(cutsite_list[[i]][1]) == FALSE){
+    if(!is.na(cutsite_list[[i]][1])){
       count <- count + length(cutsite_list[[i]])
     }
   }
@@ -213,7 +213,7 @@ Samples_Per_Lane <- function(num_cutsites,
   RADtags <- num_cutsites*2
   min_DNA_seqs <- ReadsPerLane/desired_coverage
   estimated_num_samples <- min_DNA_seqs/RADtags
-  return(round(estimated_num_samples))
+  return(floor(estimated_num_samples))
 }
 
 
