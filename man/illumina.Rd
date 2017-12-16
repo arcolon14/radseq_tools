@@ -1,5 +1,7 @@
 \name{illumina}
 \alias{illumina}
+\alias{hiseq2500}
+\alias{hiseq4000}
 \docType{data}
 \title{
 Sequencing machine read throughput
