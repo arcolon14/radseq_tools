@@ -26,7 +26,7 @@ Although RADseq studies require relatively little previous information on the ge
 
 \section{Getting started:}
 \subsection{Verifying R version}
-To run \emph{RADseqTools}, make sure you have a recent \texttt{R} installation. The package was written using \texttt{R version 3.4.2}, but should work with versions above \texttt{3.1.0}. To verify the installed \texttt{R} version, use:
+To run \texttt{RADseqTools}, make sure you have a recent \texttt{R} installation. The package was written using \texttt{R version 3.4.2}, but should work with versions above \texttt{3.1.0}. To verify the installed \texttt{R} version, use:
 <<>>=
 R.version.string
 @
@@ -45,7 +45,7 @@ library(RADseqTools)
 
 Alternatively, source the functions using:
 <<eval=FALSE>>=
-source("./../R/Functions.R")
+source("./Functions.R")
 @
 
 Additional information on the package can be found in:\\ \texttt{https://github.com/angelgr2/radseq\_tools}
@@ -57,11 +57,11 @@ This brief guide will provide examples of all the package's basic functions and 
 
 \subsection{Load and process reference sequence}
 
-To begin, we need to load the reference sequence into a \texttt{RADseqTools} object. This new \texttt{sequence} object can then be used to search for restriction sites. Create a variable containing the path to the reference sequence.  
+To begin, we need to load the reference sequence into a \texttt{RADseqTools} object. This new \texttt{sequence} object can then be used to search for restriction sites. Create a variable containing the path to the reference sequence. For example:
 <<eval=FALSE>>=
-fasta_dir <- "./../inst/extdata/test_geno.fa.gz"
+fasta_dir <- "./path/to/test_geno.fa.gz"
 @
-Because this test dataset is available with the package installation, it can also be obtained from the \texttt{extdata} by using:
+Because this test dataset is available with the package installation, it can also be obtained from the \texttt{extdata} directory by using:
 <<>>=
 fasta_dir <- system.file("extdata",
                          "test_geno.fa.gz",
@@ -69,7 +69,7 @@ fasta_dir <- system.file("extdata",
 
 @
 
-This path variable is then the input of the \texttt{process\_fasta} function, which reads the file provided in the path, converting multi-line sequence objects into single line sequences. Sequences bellow 10kb are filtered and not included in the resulting sequences object. The output of the function is a vector containing the sequence strings for each of the chromosomes/scaffofds in the FASTA file. Here, we are creating the object \texttt{mySeqs} using the output of \texttt{process\_fasta}, and displaying the first few nucleotides for each of the chromosomes. 
+This path variable is then uased as the input of the \texttt{process\_fasta} function, which reads the file provided in the path, converting multi-line sequence objects into single line sequences. Sequences bellow 10kb are filtered and not included in the resulting sequences object. The output of the function is a vector containing the sequence strings for each of the chromosomes/scaffofds in the FASTA file. Here, we are creating the object \texttt{mySeqs} using the output of \texttt{process\_fasta} and displaying the first few nucleotides for each of the chromosomes. 
 <<>>=
 mySeqs <- process_fasta(fasta_dir, 10000)
 
@@ -129,8 +129,8 @@ data(illumina)
 
 The output is a vector contaning the estimated per-sample coverage for the machine's low, medium and high read throughput. Here's an example:
 <<>>=
-nCuts <- 35000     # Number of cutsites.
-nSams <- 96        # Number of multiplexed samples 
+nCuts <- 35000         # Number of cutsites.
+nSams <- 96            # Number of multiplexed samples 
 illumina <- "hiseq2500"
 Per_Sample_Coverage(nCuts, nSams, illumina)
 illumina <- "hiseq4000"
@@ -140,8 +140,8 @@ Per_Sample_Coverage(nCuts, nSams, illumina)
 \subsection{Estimate samples per lane}
 The package can also be used to calculate an estimation of the number of samples that can be sequenced in a single Illumina sequencing lane for a given coverage. The function works similarly to \texttt{Per\_Sample\_Coverage}, as it takes the number of cutsites, a desired target coverage, and a type of Illumina sequencing machine. It outputs a vector containing calculated number of samples for the machine's low, medium and high read throughputs.
 <<>>=
-nCuts <- 35000     # Number of cutsites.   
-cover <- 45        # Target per-sample average coverage
+nCuts <- 35000         # Number of cutsites.   
+cover <- 45            # Target per-sample average coverage
 illumina <- "hiseq2500"
 Samples_Per_Lane(nCuts, cover, illumina)
 illumina <- "hiseq4000"
@@ -151,9 +151,9 @@ Samples_Per_Lane(nCuts, cover, illumina)
 \subsection{Estimate required sequencing reads}
 Given a fixed number of cutsites, number of samples, and target per-sample coverage, the \texttt{DNA\_Reads\_Per\_Lane} function calculates an estimate of the required number of reads. It can be used to determine the type of sequencing machine, and number of sequencing lanes, necessary for the experiment.
 <<>>=
-nCuts <- 35000     # Number of cutsites.
-nSams <- 96        # Number of multiplexed samples 
-cover <- 45        # Target per-sample average coverage
+nCuts <- 35000       # Number of cutsites.
+nSams <- 96          # Number of multiplexed samples 
+cover <- 45          # Target per-sample average coverage
 DNA_Reads_Per_Lane(nCuts, nSams, cover)
 @
 
