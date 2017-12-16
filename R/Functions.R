@@ -214,8 +214,6 @@ Samples_Per_Lane <- function(num_cutsites,
     ReadsPerLane <- hiseq2500                         #per lane in the desired sequencer with the range
   }else if(sequencing_machine == "hiseq4000"){        #of low, medium, or high total reads per lane
     ReadsPerLane <- hiseq4000
-  }else if(!is.element(sequencing_machine, c('hiseq2500', 'hiseq4000'))){
-     stop('Options for sequencing machine: \'hiseq2500\' (default) or \'hiseq4000\'')
   }
   RADtags <- num_cutsites*2
   min_DNA_seqs <- ReadsPerLane/desired_coverage
