@@ -1,5 +1,5 @@
 # Functions for the RADTools package
-# BitBucket repository: https://github.com/angelgr2/radseq_tools
+# GitHub repository: https://github.com/angelgr2/radseq_tools
 
 
 #
@@ -17,15 +17,13 @@ process_fasta <- function(path_to_fasta,
     min_seq_len <- 5000
   }
   
-  fa <- file(path_to_fasta, open='r')
-  all_seq <- c()                 # Final vector containing all sequences in the reference
-  loc_seq <- character(1e6)      # Local vector containing per-chromosome/scaffold sequences
-  long_seq <- NULL               # Variable containing the merged sequences
-  idx <- 1                       # index for loc_seq
+  fa <- file(path_to_fasta, 'r')
+  all_seq <- c()      # Final vector containing all sequences in the reference
+  loc_seq <- c()      # Local vector containing per-chromosome/scaffold sequences
+  long_seq <- NULL    # Variable containing the merged sequences
   while( TRUE ){
-    # read one line
+    # read one line at a time
     line <- readLines(fa, n=1)
-    
     # break at EOF and output last sequence set
     if( length(line) == 0 ){
       # Process last sequence set
@@ -44,9 +42,6 @@ process_fasta <- function(path_to_fasta,
     if(strsplit(line, split='')[[1]][1] == '>'){
       # And if not the first header read
       if(length(loc_seq) != 0){
-        # Reset index
-        idx <- 1
-        
         # Process previous sequence set
         
         # Append all sequence lines into a single long sequence
@@ -58,25 +53,16 @@ process_fasta <- function(path_to_fasta,
         }
         
         # clear for next sequence set
-        loc_seq <- character(1e6)
+        loc_seq <- c()
       }
     } else {
-      # If it is a sequence line just index it into the local sequence vector
-      
-      # Increase size of vector if too small
-      if (idx > length(loc_seq)){
-        loc_seq <- c(loc_seq, character(5e5))
-      }
-      loc_seq[idx] <- line
-      
-      # increase index
-      idx <- idx + 1
+      # if it is a sequence line just append to the local sequence vector
+      loc_seq <- c(loc_seq, line)
     }
   }
   close(fa)    # close conection 
   return(all_seq)  # output final sequence vector
 }
-
 
 
 #
@@ -90,8 +76,9 @@ find_cuts <- function(genomic_seq, restriction_site_seq){
   # Final output is a list containing the vector positions for each of the sequences of interest. 
   # Function by Angel G. Rivera-Colon
   
-  final_cut <- list()           # final output list, contains all cut vectors
-  idx <- 1                      # index of final_cut list
+  final_cut <- list()                        # final output list, contains all cut vectors
+  length(final_cut) <- length(genomic_seq)   # pre-allocat memory for cut list
+  idx <- 1                                   # index of final_cut list
   for(seq in genomic_seq){
     # Find string `cutsite` in string `seq`
     pos <- gregexpr(restriction_site_seq, seq, fixed=T, useBytes=T)
