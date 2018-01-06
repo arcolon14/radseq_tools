@@ -69,7 +69,7 @@ fasta_dir <- system.file("extdata",
 
 @
 
-This path variable is then uased as the input of the \texttt{process\_fasta} function, which reads the file provided in the path, converting multi-line sequence objects into single line sequences. Sequences bellow 10kb are filtered and not included in the resulting sequences object. The output of the function is a vector containing the sequence strings for each of the chromosomes/scaffofds in the FASTA file. Here, we are creating the object \texttt{mySeqs} using the output of \texttt{process\_fasta} and displaying the first few nucleotides for each of the chromosomes. 
+This path variable is then used as the input of the \texttt{process\_fasta} function, which reads the file provided in the path, converting multi-line sequence objects into single line sequences. Sequences bellow 10kb are filtered and not included in the resulting sequences object. The output of the function is a vector containing the sequence strings for each of the chromosomes/scaffofds in the FASTA file. Here, we are creating the object \texttt{mySeqs} using the output of \texttt{process\_fasta} and displaying the first few nucleotides for each of the chromosomes. 
 <<>>=
 mySeqs <- process_fasta(fasta_dir, 10000)
 
